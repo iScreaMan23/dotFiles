@@ -6,28 +6,30 @@ if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
-	Plug 'ggreer/the_silver_searcher'
- 	Plug 'mileszs/ack.vim'
-	Plug 'joshdick/onedark.vim'
-	Plug 'tpope/vim-surround'
-	Plug 'tomasiser/vim-code-dark'
-	Plug 'sheerun/vim-polyglot'
-	Plug 'junegunn/fzf.vim'
-	Plug 'airblade/vim-gitgutter'  " Slows down moving left w/ space and h
-	Plug 'vim-syntastic/syntastic'
-	Plug 'drewtempelmeyer/palenight.vim'
-	Plug 'scrooloose/nerdtree'
-	Plug 'junegunn/goyo.vim'
-	Plug 'jreybert/vimagit'
-	Plug 'vimwiki/vimwiki'
-	Plug 'bling/vim-airline'
-	Plug 'kovetskiy/sxhkd-vim'
-	Plug 'SirVer/ultisnips'
-	Plug 'lervag/vimtex'
-	Plug 'honza/vim-snippets'
-	Plug 'ycm-core/YouCompleteMe'  " This is a long read
-	Plug 'powerline/fonts'
-	Plug 'xuhdev/vim-latex-live-preview'
+" 	Plug 'evandew/supertab'
+"	Plug 'davidhalter/jedi-vim'
+"	Plug 'ggreer/the_silver_searcher'
+" 	Plug 'mileszs/ack.vim'
+"	Plug 'joshdick/onedark.vim'
+"	Plug 'tpope/vim-surround'
+"	Plug 'tomasiser/vim-code-dark'
+"	Plug 'sheerun/vim-polyglot'
+"	Plug 'junegunn/fzf.vim'
+"	Plug 'airblade/vim-gitgutter'  " Slows down moving left w/ space and h
+"   Plug 'vim-syntastic/syntastic'
+"	Plug 'drewtempelmeyer/palenight.vim'
+"	Plug 'scrooloose/nerdtree'
+"	Plug 'junegunn/goyo.vim'
+"	Plug 'jreybert/vimagit'
+"	Plug 'vimwiki/vimwiki'
+"	Plug 'bling/vim-airline'
+"	Plug 'kovetskiy/sxhkd-vim'
+"	Plug 'SirVer/ultisnips'
+"	Plug 'lervag/vimtex'
+"	Plug 'honza/vim-snippets'
+"	Plug 'ycm-core/YouCompleteMe'  " This is a long read
+"	Plug 'powerline/fonts'
+"	Plug 'xuhdev/vim-latex-live-preview'
 call plug#end()
 
 " vimwiki
