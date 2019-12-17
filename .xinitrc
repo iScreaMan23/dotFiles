@@ -8,6 +8,6 @@ xmodmap $HOME/.config/keysanity/modRemap &
 xset r rate 200 50
 unclutter --timeout 3 --jitter 75 --ignore-scrolling &
 
-source .localConfig
+. ./.localConfig
 
 exec bspwm
