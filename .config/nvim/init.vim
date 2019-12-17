@@ -1,6 +1,7 @@
 set number relativenumber
 set nocompatible
 set encoding=utf-8
+set autochdir
 set tabstop=4
 set autoindent
 set smartindent

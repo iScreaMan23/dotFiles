@@ -34,7 +34,6 @@
 	let mapleader="\<Space>"
 	let maplocalleader="\<Space>"
 	nnoremap <leader>= yypVr=
- 	nnoremap <Leader><Leader> :source ~/.config/nvim/init.vim <CR>
 
 " Nerd tree
 	map <leader>n :NERDTreeToggle<CR>

@@ -1,7 +1,7 @@
 diff --git a/config.def.h b/config.def.h
 index 4b3bf15..1986316 100644
---- a/config.def.h
-+++ b/config.def.h
+--- a/config.h
++++ b/config.h
 @@ -163,8 +163,8 @@ static uint forcemousemod = ShiftMask;
   */
  static MouseShortcut mshortcuts[] = {
@@ -20,7 +20,7 @@ index 9a4f5a4..eb5bd86 100644
 @@ -1040,6 +1040,11 @@ tnew(int col, int row)
  	treset();
  }
- 
+
 +int tisaltscr(void)
 +{
 +	return IS_SET(MODE_ALTSCREEN);
@@ -35,7 +35,7 @@ index 1332cf1..f9ad815 100644
 +++ b/st.h
 @@ -89,6 +89,7 @@ void sendbreak(const Arg *);
  void toggleprinter(const Arg *);
- 
+
  int tattrset(int);
 +int tisaltscr(void);
  void tnew(int, int);
@@ -51,7 +51,7 @@ index 6406925..de41086 100644
  	uint  release;
 +	int  altscrn;  /* 0: don't care,  -1: not alt screen,  1: alt screen */
  } MouseShortcut;
- 
+
  typedef struct {
 @@ -426,6 +427,7 @@ mouseaction(XEvent *e, uint release)
  	for (ms = mshortcuts; ms < mshortcuts + LEN(mshortcuts); ms++) {

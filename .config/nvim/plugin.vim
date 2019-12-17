@@ -56,6 +56,13 @@ call plug#begin('~/.config/nvim/plugged')
 
 call plug#end()
 
+"" vim-airline https://github.com/vim-airline/vim-airline
+	let g:airline#extensions#tabline#enabled = 1
+	let g:airline#extensions#tabline#left_sep = ' '
+	let g:airline#extensions#tabline#left_alt_sep = '|'
+	let g:airline#extensions#tabline#formatter = 'unique_tail'
+	let g:airline_powerline_fonts = 1
+
 " vimwiki
 	let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 	let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
@@ -85,13 +92,6 @@ call plug#end()
 "	let g:syntastic_check_on_open = 1
 "	let g:syntastic_check_on_wq = 0
 "
-"" vim-airline https://github.com/vim-airline/vim-airline
-"	let g:airline#extensions#tabline#enabled = 1
-"	let g:airline#extensions#tabline#left_sep = ' '
-"	let g:airline#extensions#tabline#left_alt_sep = '|'
-"	let g:airline#extensions#tabline#formatter = 'unique_tail'
-"	let g:airline_powerline_fonts = 1
-
 
 " fzf https://github.com/junegunn/fzf.vim
 "" [Buffers] Jump to the existing window if possible

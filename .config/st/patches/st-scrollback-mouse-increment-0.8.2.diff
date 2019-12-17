@@ -7,10 +7,10 @@ Subject: [st] [patch] Exposed variable to easily change mouse scroll increment.
  config.def.h | 5 +++--
  1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/config.def.h b/config.def.h
+diff --git a/config.h b/config.h
 index ad20c4c..47e4b66 100644
---- a/config.def.h
-+++ b/config.def.h
+--- a/config.h
++++ b/config.h
 @@ -154,6 +154,7 @@ static unsigned int defaultattr = 11;
   * Internal mouse shortcuts.
   * Beware that overloading Button1 will disable the selection.

@@ -9,6 +9,10 @@
 	/home/iscr/bin/
 	..
 1575324937
+'h
+	/home/iscr/
+	..
+1576093818
 'n
 	/home/iscr/.config/bspwm
 	bspwmrc
@@ -17,10 +21,6 @@
 	/home/iscr/.config/vifm
 	..
 1575324937
-'h
-	/home/iscr/
-	..
-1576093818
 
 # Bookmarks:
 
@@ -227,8 +227,14 @@ d/home/iscr/.config
 	bspwm
 1
 d/home/iscr/.config/bspwm
-	bspwmrc
-1
+	..
+0
+d/home/iscr/.config
+	st
+9
+d/home/iscr/.config/st
+	..
+0
 d
 
 # Right window history (oldest to newest):
@@ -285,9 +291,9 @@ D
 :x
 :cat
 :terminal
-:Q
-:q
 :e bspwmrc
+:q
+:Q
 
 # Search history (oldest to newest):
 /X
