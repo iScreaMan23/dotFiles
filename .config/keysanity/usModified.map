@@ -1,0 +1,14 @@
+# us.map
+# https://linux.die.net/man/5/keymaps 
+# add KEYMAP=PATH to /etc/vconsole.conf
+keymaps 0-2,4-6,8-9,12
+alt_is_meta
+include "qwerty-layout"
+include "linux-with-alt-and-altgr"
+include "compose.latin1"
+include "euro1.map"
+include "us.map"
+strings as usual
+
+keycode   58 = Control
+keycode   100 = Escape

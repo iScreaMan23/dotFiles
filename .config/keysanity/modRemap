@@ -1,0 +1,44 @@
+!https://wiki.archlinux.org/index.php/Xmodmap#Keymap_table
+!clear all mod keys
+    clear shift
+    clear lock
+    clear control
+    clear mod1
+    clear mod2
+    clear mod3
+    clear mod4
+    clear mod5
+
+!clear pageup/pagedown
+    keycode 112 = NoSymbol
+    keycode 117 = NoSymbol
+
+!change capslock to control
+    keycode 66 = Control_R NoSymbol
+
+!change Ctrl_L to Alt_R
+    keycode 37 = Alt_R Meta_R
+
+!Map ShiftR to Backspace and Delete
+    keycode 62 = BackSpace Delete
+    keycode 22 = BackSpace BackSpace   
+
+!Map Alt_R to Escape clear escape
+    keycode 108 = Escape Meta_R
+    keycode 9 = Escape Escape 
+
+!reassign Alt_L and/or Alt_R to ModeSwitch
+    keycode 64 = Mode_switch Mode_switch 
+
+!reassign Control_R to num_lock
+    keycode 105 = Hyper_L
+
+!reassign Control_R to num_lock
+    keycode 118 = 1 2 3 4 5 6 7 8 9 
+
+!set mod keys
+    add shift = Shift_L
+    add control = Caps_Lock Control_R
+    add mod1 = Alt_L
+    add mod3 = Alt_R Num_Lock
+    add mod4 = Super_L

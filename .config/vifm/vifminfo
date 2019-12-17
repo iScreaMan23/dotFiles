@@ -1,0 +1,314 @@
+# You can edit this file by hand, but it's recommended not to do that.
+
+# Marks:
+'H
+	/home/iscr/
+	..
+1575324937
+'b
+	/home/iscr/bin/
+	..
+1575324937
+'n
+	/home/iscr/.config/bspwm
+	bspwmrc
+1576085721
+'z
+	/home/iscr/.config/vifm
+	..
+1575324937
+'h
+	/home/iscr/
+	..
+1576093818
+
+# Bookmarks:
+
+# TUI:
+al
+q1
+v2
+ov
+m-1
+l2
+r2
+
+# Left window history (oldest to newest):
+d/srv
+	..
+0
+d/home/iscr/.config/sxhkd
+	sxhkdrc
+1
+d/home/iscr/.config/bspwm
+	bspwmrc
+1
+d/home/iscr/otherConfigs/lukeSmithConfig
+	.config
+1
+d/home/iscr/otherConfigs/lukeSmithConfig/.config
+	..
+0
+d/home/iscr/otherConfigs/lukeSmithConfig
+	..
+0
+d/home/iscr/otherConfigs/distroTubeConfig
+	.config
+1
+d/home/iscr/otherConfigs/distroTubeConfig/.config
+	vifm
+17
+d/home/iscr/otherConfigs/distroTubeConfig/.config/vifm
+	vifmrc
+3
+d/home/iscr
+	AUR
+1
+d/home/iscr/AUR
+	dashbinsh
+1
+d/home/iscr
+	AUR
+1
+d/home
+	iscr
+1
+d/
+	home
+4
+d/home
+	iscr
+1
+d/home/iscr
+	AUR
+1
+d/home/iscr/AUR
+	dashbinsh
+1
+d/home/iscr/AUR/dashbinsh
+	..
+0
+d/home/iscr/AUR
+	discord
+2
+d/home/iscr/AUR/discord
+	pkg
+1
+d/home/iscr/AUR/discord/pkg
+	..
+0
+d/home/iscr/AUR/discord
+	..
+0
+d/home/iscr/AUR
+	..
+0
+d/home/iscr
+	AUR
+1
+d/home/iscr/.config/lukeSmithConfig/.config
+	ranger
+14
+d/home/iscr/.config/lukeSmithConfig/.config/ranger
+	..
+0
+d/home/iscr/.config/lukeSmithConfig/.config
+	nvim
+13
+d/home/iscr/.config/lukeSmithConfig/.config/nvim
+	..
+0
+d/home/iscr/.config/lukeSmithConfig/.config
+	zsh
+19
+d/home/iscr/.config/lukeSmithConfig/.config/zsh
+	..
+0
+d/home/iscr/.config/lukeSmithConfig/.config
+	wall.png
+26
+d/home/iscr/.config
+	..
+0
+d/home/iscr
+	..
+0
+d/home
+	iscr
+1
+d/home/iscr
+	otherConfigs
+10
+d/home/iscr/otherConfigs
+	dotfiles-master
+2
+d/home/iscr/otherConfigs/dotfiles-master
+	bspwm
+4
+d/home/iscr/otherConfigs/dotfiles-master/bspwm
+	..
+0
+d/home/iscr/otherConfigs/dotfiles-master
+	bspwm
+4
+d/home/iscr/otherConfigs/dotfiles-master/bspwm
+	.config
+1
+d/home/iscr/otherConfigs/dotfiles-master/bspwm/.config
+	..
+0
+d/home/iscr/otherConfigs/dotfiles-master/bspwm
+	.config
+1
+d/home/iscr/otherConfigs/dotfiles-master/bspwm/.config
+	sxhkd
+2
+d/home/iscr/otherConfigs/dotfiles-master/bspwm/.config/sxhkd
+	..
+0
+d/home/iscr/otherConfigs/dotfiles-master/bspwm/.config
+	..
+0
+d/home/iscr/otherConfigs/dotfiles-master/bspwm
+	..
+0
+d/home/iscr/otherConfigs/dotfiles-master
+	..
+0
+d/home/iscr/otherConfigs
+	..
+0
+d/home/iscr
+	.config
+2
+d/home/iscr/.config
+	bspwm
+1
+d/home/iscr/.config/bspwm
+	bspwmrc
+1
+d/home/iscr/.config
+	bspwm
+1
+d/home/iscr
+	.config
+2
+d/home
+	..
+0
+d/
+	home
+4
+d/home
+	iscr
+1
+d/home/iscr
+	.config
+2
+d/home
+	iscr
+1
+d/
+	home
+4
+d/home
+	..
+0
+d/
+	home
+4
+d/home
+	iscr
+1
+d/home/iscr
+	.config
+2
+d/home/iscr/.config
+	bspwm
+1
+d/home/iscr/.config/bspwm
+	bspwmrc
+1
+d
+
+# Right window history (oldest to newest):
+D/etc/X11/xinit/xinitrc.d
+	..
+0
+D/usr
+	share
+8
+D/usr/share
+	X11
+2
+D/usr/share/X11
+	xorg.conf.d
+4
+D/usr/share/X11/xorg.conf.d
+	..
+0
+D/usr/share/X11
+	app-defaults
+1
+D/usr/share
+	X11
+2
+D/usr
+	share
+8
+D/etc/X11/xorg.conf.d
+	..
+0
+D/etc
+	X11
+3
+D/etc/X11
+	xinit
+1
+D/etc/X11/xinit
+	xinitrc.d
+1
+D/home/iscr
+	..
+0
+D/home
+	iscr
+1
+D/
+	root
+11
+D
+
+# Command line history (oldest to newest):
+:cd
+:ls
+:x
+:cat
+:terminal
+:Q
+:q
+:e bspwmrc
+
+# Search history (oldest to newest):
+/X
+
+# Prompt history (oldest to newest):
+
+# Local filter history (oldest to newest):
+
+# Registers:
+
+# Directory stack (oldest to newest):
+
+# Trash content:
+
+# State:
+f
+i1
+[.0
+[F
+F
+I1
+].1
+]F
+s0
