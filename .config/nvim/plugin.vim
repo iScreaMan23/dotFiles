@@ -10,7 +10,7 @@ call plug#begin('~/.config/nvim/plugged')
 "	Plug 'davidhalter/jedi-vim'
 "	Plug 'ggreer/the_silver_searcher'
 " 	Plug 'mileszs/ack.vim'
-"	Plug 'joshdick/onedark.vim'
+	Plug 'joshdick/onedark.vim'
 "	Plug 'tpope/vim-surround'
 "	Plug 'tomasiser/vim-code-dark'
 "	Plug 'sheerun/vim-polyglot'
