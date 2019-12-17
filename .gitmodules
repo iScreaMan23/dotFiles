@@ -1,9 +1,0 @@
-[submodule ".config/st"]
-	path = .config/st
-	url = https://git.suckless.org/st
-[submodule ".config/dmenu"]
-	path = .config/dmenu
-	url = https://git.suckless.org/dmenu
-[submodule ".config/surf"]
-	path = .config/surf
-	url = https://git.suckless.org/surf
