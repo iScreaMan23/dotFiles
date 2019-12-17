@@ -235,6 +235,30 @@ d/home/iscr/.config
 d/home/iscr/.config/st
 	..
 0
+d/home/iscr/.config
+	nvim
+6
+d/home/iscr/.config/nvim
+	..
+0
+d/home/iscr/.config
+	nvim
+6
+d/home/iscr/.config/nvim
+	..
+0
+d/home/iscr/.config
+	..
+0
+d/home/iscr
+	.config
+2
+d/home/iscr/.config
+	polybar
+7
+d/home/iscr/.config/polybar
+	config
+1
 d
 
 # Right window history (oldest to newest):
@@ -293,12 +317,14 @@ D
 :terminal
 :e bspwmrc
 :q
+:help
 :Q
 
 # Search history (oldest to newest):
 /X
 
 # Prompt history (oldest to newest):
+pnvim
 
 # Local filter history (oldest to newest):
 
