@@ -175,6 +175,8 @@ static void spawn(Client *c, const Arg *a);
 static void msgext(Client *c, char type, const Arg *a);
 static void destroyclient(Client *c);
 static void cleanup(void);
+static void updatehistory(const char *u, const char *t);
+static int insertmode = 0;
 
 /* GTK/WebKit */
 static WebKitWebView *newview(Client *c, WebKitWebView *rv);
@@ -231,6 +233,8 @@ static void togglefullscreen(Client *c, const Arg *a);
 static void togglecookiepolicy(Client *c, const Arg *a);
 static void toggleinspector(Client *c, const Arg *a);
 static void find(Client *c, const Arg *a);
+static void externalpipe(Client *c, const Arg *a);
+static void insert(Client *c, const Arg *a);
 
 /* Buttons */
 static void clicknavigate(Client *c, const Arg *a, WebKitHitTestResult *h);
@@ -301,6 +305,80 @@ static ParamName loadfinished[] = {
 /* configuration, allows nested code to access above variables */
 #include "config.h"
 
+static void
+externalpipe_execute(char* buffer, Arg *arg) {
+	int to[2];
+	void (*oldsigpipe)(int);
+
+	if (pipe(to) == -1)
+		return;
+
+	switch (fork()) {
+	case -1:
+		close(to[0]);
+		close(to[1]);
+		return;
+	case 0:
+		dup2(to[0], STDIN_FILENO); close(to[0]); close(to[1]);
+		execvp(((char **)arg->v)[0], (char **)arg->v);
+		fprintf(stderr, "st: execvp %s\n", ((char **)arg->v)[0]);
+		perror("failed");
+		exit(0);
+	}
+
+	close(to[0]);
+	oldsigpipe = signal(SIGPIPE, SIG_IGN);
+	write(to[1], buffer, strlen(buffer));
+	close(to[1]);
+	signal(SIGPIPE, oldsigpipe);
+}
+
+static void
+externalpipe_resource_done(WebKitWebResource *r, GAsyncResult *s, Arg *arg)
+{
+	GError *gerr = NULL;
+	guchar *buffer = webkit_web_resource_get_data_finish(r, s, NULL, &gerr);
+	if (gerr == NULL) {
+		externalpipe_execute((char *) buffer, arg);
+	} else {
+		g_error_free(gerr);
+	}
+	g_free(buffer);
+}
+
+static void
+externalpipe_js_done(WebKitWebView *wv, GAsyncResult *s, Arg *arg)
+{
+	WebKitJavascriptResult *j = webkit_web_view_run_javascript_finish(
+		wv, s, NULL);
+	if (!j) {
+		return;
+	}
+	JSCValue *v = webkit_javascript_result_get_js_value(j);
+	if (jsc_value_is_string(v)) {
+		char *buffer = jsc_value_to_string(v);
+		externalpipe_execute(buffer, arg);
+		g_free(buffer);
+	}
+	webkit_javascript_result_unref(j);
+}
+
+void
+externalpipe(Client *c, const Arg *arg)
+{
+	if (curconfig[JavaScript].val.i) {
+		webkit_web_view_run_javascript(
+			c->view, "window.document.documentElement.outerHTML",
+			NULL, externalpipe_js_done, arg);
+	} else {
+		WebKitWebResource *resource = webkit_web_view_get_main_resource(c->view);
+		if (resource != NULL) {
+			webkit_web_resource_get_data(
+				resource, NULL, externalpipe_resource_done, arg);
+		}
+	}
+}
+
 void
 usage(void)
 {
@@ -336,11 +414,11 @@ setup(void)
 	curconfig = defconfig;
 
 	/* dirs and files */
-	cookiefile = buildfile(cookiefile);
-	scriptfile = buildfile(scriptfile);
-	cachedir   = buildpath(cachedir);
-	certdir    = buildpath(certdir);
-
+	cookiefile  = buildfile(cookiefile);
+	historyfile = buildfile(historyfile);
+	scriptfile  = buildfile(scriptfile);
+	cachedir    = buildpath(cachedir);
+	certdir     = buildpath(certdir);
 	gdkkb = gdk_seat_get_keyboard(gdk_display_get_default_seat(gdpy));
 
 	if (pipe(pipeout) < 0 || pipe(pipein) < 0) {
@@ -1076,10 +1154,26 @@ cleanup(void)
 	close(pipein[0]);
 	close(pipeout[1]);
 	g_free(cookiefile);
+	g_free(historyfile);
 	g_free(scriptfile);
 	g_free(stylefile);
 	g_free(cachedir);
 	XCloseDisplay(dpy);
+}
+
+void
+updatehistory(const char *u, const char *t)
+{
+	FILE *f;
+	f = fopen(historyfile, "a+");
+
+	char b[20];
+	time_t now = time (0);
+	strftime (b, 20, "%Y-%m-%d %H:%M:%S", localtime (&now));
+	fputs(b, f);
+
+	fprintf(f, " %s %s\n", u, t);
+	fclose(f);
 }
 
 WebKitWebView *
@@ -1333,7 +1427,11 @@ winevent(GtkWidget *w, GdkEvent *e, Client *c)
 		updatetitle(c);
 		break;
 	case GDK_KEY_PRESS:
-		if (!curconfig[KioskMode].val.i) {
+		if (!curconfig[KioskMode].val.i &&
+		    !insertmode ||
+		    CLEANMASK(e->key.state) == (MODKEY|GDK_SHIFT_MASK) ||
+		    CLEANMASK(e->key.state) == (MODKEY) ||
+		    gdk_keyval_to_lower(e->key.keyval) == (GDK_KEY_Escape)) {
 			for (i = 0; i < LENGTH(keys); ++i) {
 				if (gdk_keyval_to_lower(e->key.keyval) ==
 				    keys[i].keyval &&
@@ -1519,6 +1617,7 @@ loadchanged(WebKitWebView *v, WebKitLoadEvent e, Client *c)
 		break;
 	case WEBKIT_LOAD_FINISHED:
 		seturiparameters(c, uri, loadfinished);
+		updatehistory(uri, c->title);
 		/* Disabled until we write some WebKitWebExtension for
 		 * manipulating the DOM directly.
 		evalscript(c, "document.documentElement.style.overflow = '%s'",
@@ -1945,6 +2044,12 @@ find(Client *c, const Arg *a)
 		if (strcmp(s, "") == 0)
 			webkit_find_controller_search_finish(c->finder);
 	}
+}
+
+void
+insert(Client *c, const Arg *a)
+{
+		insertmode = (a->i);
 }
 
 void
