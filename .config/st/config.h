@@ -5,16 +5,14 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Source Code Pro:pixelsize=12:antialias=true:autohint=true";
+static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
+/* Spare fonts */
 static char *font2[] = {
 	"Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true",
 	"Hack Nerd Font Mono:pixelsize=11:antialias=true:autohint=true",
 };
-static int borderpx = 2;
 
-/*bg opacity */
-float alpha = 0.8;
-float alphaUnfocussed = 0.6;
+static int borderpx = 2;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -102,6 +100,10 @@ char *termname = "st-256color";
  */
 unsigned int tabspaces = 8;
 
+/* bg opacity */
+float alpha = 0.8;
+
+/* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 	/* 8 normal colors */
 	"black",
@@ -126,53 +128,48 @@ static const char *colorname[] = {
 	[255] = 0,
 
 	/* more colors can be added after 255 to use with DefaultXX */
-	"#cccccc",
-	"#555555",
+	"#000000", //background
+	"#cccccc", //foreground
+
+	// Nord Theme
+/*	"#3b4252",
+	"#bf616a",
+	"#a3be8c",
+	"#ebcb8b",
+	"#81a1c1",
+	"#b48ead",
+	"#88c0d0",
+	"#e5e9f0",
+
+	"#4c566a"
+	"#bf616a",
+	"#a3be8c",
+	"#ebcb8b",
+	"#81a1c1",
+	"#b48ead",
+	"#8fbcbb",
+	"#eceff4",
+ 	[255] = 0,
+
+	"#2e3440",  background
+	"#d8dee9",  foreground
+*/
 };
-///* Terminal colors (16 first used in escape sequence) */
-//static const char *colorname[] = {
-//
-//  /* 8 normal colors */
-//  [0] = "#000000", /* black   */
-//  [1] = "#ff5555", /* red     */
-//  [2] = "#50fa7b", /* green   */
-//  [3] = "#f1fa8c", /* yellow  */
-//  [4] = "#bd93f9", /* blue    */
-//  [5] = "#ff79c6", /* magenta */
-//  [6] = "#8be9fd", /* cyan    */
-//  [7] = "#bbbbbb", /* white   */
-//
-//  /* 8 bright colors */
-//  [8]  = "#44475a", /* black   */
-//  [9]  = "#ff5555", /* red     */
-//  [10] = "#50fa7b", /* green   */
-//  [11] = "#f1fa8c", /* yellow  */
-//  [12] = "#bd93f9", /* blue    */
-//  [13] = "#ff79c6", /* magenta */
-//  [14] = "#8be9fd", /* cyan    */
-//  [15] = "#ffffff", /* white   */
-//
-//  /* special colors */
-//  [256] = "#282a36", /* background */
-//  [257] = "#f8f8f2", /* foreground */
-//};
+
 
 /*
  * Default colors (colorname index)
- * foreground, background, cursor
+ * foreground, background, cursor, reverse cursor
+unsigned int defaultfg = 7;
+unsigned int defaultbg = 258;
+static unsigned int defaultcs = 256;
+static unsigned int defaultrcs = 257;
  */
+
 unsigned int defaultfg = 257;
 unsigned int defaultbg = 256;
 static unsigned int defaultcs = 257;
-static unsigned int defaultrcs = 257;
-
-/*
- * Colors used, when the specific fg == defaultfg. So in reverse mode this
- * will reverse too. Another logic would only make the simple feature too
- * complex.
- */
-unsigned int defaultitalic = 7;
-unsigned int defaultunderline = 7;
+static unsigned int defaultrcs = 256;
 /*
  * Default shape of cursor
  * 2: Block ("█")
@@ -202,13 +199,6 @@ static unsigned int mousebg = 0;
  */
 static unsigned int defaultattr = 11;
 
-/// Colors for the entities that are highlighted in normal mode.
-static unsigned int highlightBg = 160;
-static unsigned int highlightFg = 15;
-/// Colors for the line and column that is marked 'current' in normal mode.
-static unsigned int currentBg = 0;
-static unsigned int currentFg = 15;
-
 /*
  * Force mouse select/shortcuts while mask is active (when MODE_MOUSE is set).
  * Note that if you want to use ShiftMask with selmasks, set this to an other
@@ -229,12 +219,10 @@ static MouseShortcut mshortcuts[] = {
 
 /* Internal keyboard shortcuts. */
 #define MODKEY Mod1Mask
-#define AltMask Mod1Mask
 #define TERMMOD (ControlMask|ShiftMask)
 
 static Shortcut shortcuts[] = {
 	/* mask                 keysym          function        argument */
-	{ MODKEY,               XK_c,           normalMode,     {.i =  0} },
 	{ XK_ANY_MOD,           XK_Break,       sendbreak,      {.i =  0} },
 	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
 	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
@@ -247,10 +235,6 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-	{ TERMMOD,              XK_Return,      newterm,        {.i =  0} },
-	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
-	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
-
 };
 
 /*
@@ -522,20 +506,3 @@ static char ascii_printable[] =
 	" !\"#$%&'()*+,-./0123456789:;<=>?"
 	"@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_"
 	"`abcdefghijklmnopqrstuvwxyz{|}~";
-
-
-/// word sepearors normal mode
-char wordDelimSmall[] = " \t!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
-char wordDelimLarge[] = " \t"; /// <Word sepearors normal mode (capital W)
-
-/// Shortcusts executed in normal mode (which should not already be in use)
-struct NormalModeShortcuts normalModeShortcuts [] = {
-	{ 'C', "?Building\n" },
-	{ 'c', "/Building\n" },
-	{ 'F', "?: error:\n" },
-	{ 'f', "/: error:\n" },
-	{ 'X', "?juli@machine\n" },
-	{ 'x', "/juli@machine\n" },
-};
-
-size_t const amountNormalModeShortcuts = sizeof(normalModeShortcuts) / sizeof(*normalModeShortcuts);
