@@ -25,7 +25,7 @@ super + {_, shift + } space
 	bspc node -s {biggest,smallest}.local
 ## Swap to next/previous desktop/window
 super + {_,shift +} Tab
-	bspc desktop -f {next,prev}.local
+	bspc monitor -f {next,prev}
 ## Rotate windows on desktop (cw/ccw)
 super + {_,shift +} r
 	bspc node @/ --rotate {90,-90}
@@ -33,22 +33,8 @@ super + {_,shift +} r
 ## Smart Move+Resize Window (Protesilaos Stavrou https://protesilaos.com/)
 super + shift + {h,j,k,l}
 	bspwm_smart_move {west,south,north,east}
-super + control {h,j,k,l}
+super + control + {h,j,k,l}
 	bspwm_resize {west,south,north,east} 50
-
-## Edit mode.  Toggle with all actions on left hand.
-super + w : {_,alt+} {w,a,s,d}
-	bspc node {-f,-p} {north,west,south,east}
-super + w : shift + {w,a,s,d}
-	bspwm_smart_move {north,west,south,east}
-super + w : control + {w,a,s,d}
-	bspwm_resize {north,west,south,east} 50
-super + w : {_,shift +}{1-9,0}
-	bspc {desktop -f, node -d} focus '^{1-9,10}'
-super + w : alt +
-## Change borders
-super + w: bracket{left,right}
-	bspc config -d focused window_gap "$(($(bspc config -d focused window_gap) {-,+} 5 ))"
 
 #=========#
 # Scripts #

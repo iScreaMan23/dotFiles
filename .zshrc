@@ -48,6 +48,11 @@ echo -ne '\e[5 q'
 # Use beam shape cursor for each new prompt.
 preexec() { echo -ne '\e[5 q' ;}
 
+function chpwd(){
+	emulate -L zsh
+	ls
+}
+
 # vifm
 vicd()
 {
@@ -71,4 +76,3 @@ vifm()
     fi
 }
 
-cd $HOME/home

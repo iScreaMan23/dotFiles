@@ -22,6 +22,7 @@ call plug#begin('~/.config/nvim/plugged')
 " Productivity
 	Plug 'scrooloose/nerdtree'
 	Plug 'vimwiki/vimwiki'
+	Plug 'ap/vim-css-color'
 
 " LaTeX
 "	Plug 'xuhdev/vim-latex-live-preview'
@@ -30,6 +31,8 @@ call plug#begin('~/.config/nvim/plugged')
 " Git
 	Plug 'airblade/vim-gitgutter'  " Slows down moving left w/ space and h
 	Plug 'jreybert/vimagit'
+
+" Vim Terminal
 
 " Quality of Life
 "	Plug 'tpope/vim-surround'
@@ -71,7 +74,7 @@ call plug#end()
 	let g:gitgutter_map_keys = 0
 
 " Nerd tree
-	map <leader>n :NERDTreeToggle<CR>
+	map <silent> <leader>n :NERDTreeToggle<CR>
 	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.

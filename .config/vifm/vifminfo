@@ -37,9 +37,6 @@ r2
 d/home/iscr/.config/nvim
 	..
 0
-d/home/iscr/.config/nvim
-	..
-0
 d/home/iscr/.config/polybar
 	config
 1
@@ -242,8 +239,8 @@ d/home/iscr/.config
 	st
 9
 d/home/iscr/.config/st
-	FAQ
-2
+	TODO
+7
 d
 
 # Right window history (oldest to newest):
@@ -301,9 +298,9 @@ D
 :cat
 :terminal
 :e bspwmrc
-:q
 :Q
 :help
+:q
 
 # Search history (oldest to newest):
 /X

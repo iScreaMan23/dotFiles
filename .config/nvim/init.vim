@@ -1,5 +1,5 @@
-set number relativenumber
 set nocompatible
+set number relativenumber
 set encoding=utf-8
 set autochdir
 set tabstop=4
@@ -47,8 +47,8 @@ nnoremap <silent><CR> :noh<CR><CR>
 
 set wildmenu
 
-cnoremap <Left> <Space><BS><Left>
-cnoremap <Right> <Space><BS><Right>
+" cnoremap <Left> <Space><BS><Left>
+" cnoremap <Right> <Space><BS><Right>
 
 filetype plugin indent on
 syntax on
@@ -58,23 +58,23 @@ syntax enable
 vnoremap <silent> / :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> ? :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
-
 try
     set undodir=~/.vim_runtime/temp_dirs/undodir
     set undofile
 catch
 endtry
+
 " Check file in shellcheck:
 	map <leader>s :!clear && shellcheck %<CR>
 
 " Goyo plugin makes text more readable when writing prose:
-	map <leader>f :Goyo \| set bg=light \| set linebreak<CR>
+	map <leader>f :Goyo \| set bg=dark \| set linebreak<CR>
 
 " Spell-check set to <leader>o, 'o' for 'orthography':
 	map <leader>o :setlocal spell! spelllang=en_us<CR>
 
 " Replace all is aliased to S.
-	nnoremap S :%s//g<Left><Left>
+	nnoremap <leader>S :%s//g<Left><Left>
 
 " Compile document, be it groff/LaTeX/markdown/etc.
 	map <leader>c :w! \| !compiler <c-r>%<CR>
@@ -84,13 +84,12 @@ endtry
 
 " Copy selected text to system clipboard:
 	vnoremap <C-c> "+y
-	map <C-p> "+P
-
-" C doesn't overwrite buffer
-	nnoremap c "_c
 
 " easy command mode
 	nnoremap ; :
+
+" easy command mode
+	nnoremap Y y$
 
 " Vim Wiki
 	map <leader>v :VimwikiIndex
@@ -99,14 +98,32 @@ endtry
 	nnoremap <SPACE> <Nop>
 	let mapleader="\<Space>"
 	let maplocalleader="\<Space>"
- 	nnoremap <Leader><Leader> :source ~/.config/nvim/init.vim <CR>
+ 	nmap <silent> <Leader><Leader> :bnext <cr>
 
-" :W sudo saves the file
-" (useful for handling the permission-denied error)
-command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
+" sudo writes file when you forget
+	cmap w!! w !sudo tee > /dev/null %
 
 " pull up terminal
-command! T :sp :terminal :8<c-w>_
+	tnoremap <Esc><Esc> <c-\><c-n>
+	nnoremap <silent> <leader>t :call ToggleTerminal() <cr>
+
+
+	function! ToggleTerminal()
+		if !exists("g:termname")
+			execute 'sp | res 10 | term'
+			let g:termname = bufname()
+		else
+			execute 'bunload!' g:termname
+			unlet g:termname
+		endif
+	endfunction
+
+" quit,write,
+	nmap <leader>w :w <cr>
+	nmap <leader>wq :wq <cr>
+	nmap <leader>W :w!! <cr>
+	nmap <leader>q :q <cr>
+	nmap <leader>Q :q! <cr>
 
 " Simplify window movment
 	map <C-h> <C-w>h
@@ -119,7 +136,6 @@ command! T :sp :terminal :8<c-w>_
 	nmap <leader>k  <C-w>k
 	nmap <leader>l  <C-w>l
 
-	map <leader>t<leader> :tabnext
 " source plugins, autostart/close commands and themes
 	source $HOME/.config/nvim/plugin.vim
 	source $HOME/.config/nvim/autocmd.vim

@@ -14,7 +14,22 @@
 
 " When shortcut files are updated, renew bash and ranger configs with new material:
 	autocmd BufWritePost files,directories !shortcuts
+
 " Run xrdb whenever Xdefaults or Xresources are updated.
 	autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
+
 " Update binds when sxhkdrc is updated.
 	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
+
+" Update binds when polybar is updated.
+	autocmd BufWritePost *polybar/config silent! !polybar -rqs $HOST</dev/null &>/dev/null & disown %1
+
+" Update binds when polybar is updated.
+	autocmd BufWritePost init.vim edit!
+
+" Update .profile
+	autocmd BufWritePost .profile silent! !source $HOME/.profile
+
+" Update .zshrc
+	autocmd BufWritePost .zshrc silent! !source $HOME/.zshrc
+
