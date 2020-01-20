@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/home/iscr/.local/share/firenvim'
+let g:netrw_dirhist_6='/home/iscr'
+let g:netrw_dirhist_5='/home/iscr/.config/nvim/plugged/nerdtree/lib/nerdtree'
+let g:netrw_dirhist_4='/home/iscr/.config/nvim/plugged/nerdtree/lib'
+let g:netrw_dirhist_3='/home/iscr/.config/nvim/plugged/nerdtree'
+let g:netrw_dirhist_2='/home/iscr/.config/nvim/plugged'
+let g:netrw_dirhist_1='/home/iscr/.config/nvim'

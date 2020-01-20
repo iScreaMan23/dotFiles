@@ -1,0 +1,4 @@
+* Inbox
+** [ ]
+
+[[file:~/.config/doom/modules/config/default/+evil-bindings.el:::desc "Org Capture" "X" #'org-capture]]

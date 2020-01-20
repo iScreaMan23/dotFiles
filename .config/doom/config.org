@@ -1,0 +1,112 @@
+#+TITLE: config
+
+* Files w/ keybinding configururation
+[[/home/iscr/.config/doom/modules/config/default/+evil-bindings.el][+evil-bindings.el]]
+[[/home/iscr/.config/doom/modules/config/default/+emacs-bindings.el][+emacs-bindings.el]]
+[[/home/iscr/.emacs.d/core/core-keybinds.el][core-keybindings.el]]
+* Python
+#+begin_src emacs-lisp :tangle yes
+;;(defun run-main-py(filename)
+;;  "Runs the python file in the given directory"
+;;  (interactive)
+;;  (shell-command (concat "python" filename)))
+
+;;buffer-file-name
+;;(python-pytest-file FILE &optional ARGS)
+
+(defun a-test-save-hook()
+  "Test of save hook"
+  (when (equal major-mode 'org-mode)
+    (message "hello")))
+
+(add-hook 'after-save-hook 'a-test-save-hook)
+
+#+end_src
+* emacs server
+Makes emacs startup faster!
+https://stackoverflow.com/questions/56933893/systemctl-invoke-an-emacs-server
+In terminal emulator
+systemctl --user enable emacs
+
+Restart or
+
+systemctl --user start emacs
+
+Then emacs can be started in terminal mode with
+
+emacsclient -nw
+
+or in windowed mode with
+
+emacsclient -c
+
+* Default Settings
+;; '~/.emacs.d/bin/doom refresh'
+;; - `load!' for loading external *.el files relative to this one
+;; - `use-package' for configuring packages
+;; - `after!' for running code after a package has loaded
+;; - `add-load-path!' for adding directories to the `load-path', where Emacs
+;;   looks when you load packages with `require' or `use-package'.
+;; - `map!' for binding new keys
+;;
+;; https://github.com/hlissner/doom-emacs/blob/develop/docs/api.org#map
+;;
+
+#+BEGIN_SRC emacs-lisp :tangle yes
+(setq user-full-name "iScreaMan23"
+      user-mail-address "scream@theScreamTeam.xyz")
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp :tangle yes
+(setq doom-theme 'doom-tomorrow-night)
+(setq doom-font (font-spec :family "monospace" :size 14))
+#+END_SRC
+
+#+begin_src emacs-lisp :tangle yes
+(setq org-directory "~/.config/doom/org")
+#+end_src
+;; If you intend to use org, it is recommended you change this!
+
+#+begin_src emacs-lisp :tangle yes
+(setq display-line-numbers-type 'relative)
+(menu-bar-mode -1)
+#+end_src
+* Change Leader Leader Menu Options
+* More Vimmy Hotkeys
+** Set jump forward to vim default (ctl-i)
+#+begin_src emacs-lisp :tangle yes
+;; (map! "C-i" 'better-jumper-jump-forward)
+#+end_src
+
+** Window Movement
+#+begin_src emacs-lisp :tangle yes
+(map! :leader
+      :n "h" 'evil-window-left
+      :n "j" 'evil-window-down
+      :n "k" 'evil-window-up
+      :n "l" 'evil-window-right)
+#+end_src
+** Next Buffer (space x2)
+#+begin_src emacs-lisp :tangle yes
+(map! :leader :n "SPC" 'next-buffer)
+#+end_src
+* Documentation Hotkeys
+org documents for configururation and personal notes
+ - press key to open menu
+ - display file choices
+ - press key to select file and open
+leader + <key> menu
+* Help right side bar
+#+begin_src emacs-lisp :tangle yes
+(map! :leader "g" 'magit)
+#+end_src
+* Magit right side bar
+* ideas to implement
+** changing ex mode (minibuffer) navigation
+  (define-key! evil-ex-completion-map
+    "C-a" #'evil-beginning-of-line
+    "C-b" #'evil-backward-char
+    "C-s" (if (featurep! :completion ivy)
+              #'counsel-minibuffer-history
+            #'helm-minibuffer-history))
+~/.config/doom/config.org

@@ -1,3 +1,4 @@
+" Set install plug.vim if doesn't exist
 if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
 	echo "Downloading junegunn/vim-plug to manage plugins..."
 	silent !mkdir -p ~/.config/nvim/autoload/
@@ -6,22 +7,65 @@ if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
-" Themes
-	Plug 'joshdick/onedark.vim'
-"	Plug 'tomasiser/vim-code-dark'
-"	Plug 'drewtempelmeyer/palenight.vim'
 
-" Eye Candy
-	Plug 'powerline/fonts'
+	" Easy mode
+	Plug 'easymotion/vim-easymotion'
+
+	" Tmux"
+	Plug 'tmux-plugins/vim-tmux'
+
+	" Previous buffer
+	Plug 'LeonB/vim-previous-buffer'
+
+	" Doom-Emacs-like key context menus
+	Plug 'liuchengxu/vim-which-key'
+
+	" Hard mode
+	" Plug 'dusans/vim-hardmode'
+	" tpope: The True UNIX Chad
+	" Plug 'tpope/vim-obsession'
+	" Plug 'tpope/vim-fugitive'
+	" Plug 'tpope/vim-tbone'
+	Plug 'tpope/vim-unimpaired'
+	Plug 'tpope/vim-surround'
+	Plug 'tpope/vim-repeat'
+	Plug 'jlzhjp/vim-pair'
+
+	" Vim in firefox
+	Plug 'glacambre/firenvim', { 'do': { _ -> firevim#install(0) } }
+
+	" Toggle menus
+	Plug 'jeetsukumaran/vim-buffergator'
+	Plug 'scrooloose/nerdtree'
+	Plug 'iscreaman23/windowToggle'
+	" Plug 'vimwiki/vimwiki'
+
+	" Shell Scripting
+	Plug 'itspriddle/vim-shellcheck'
+
+	" Style and Corrections
+	Plug 'vim-syntastic/syntastic'
+	Plug 'dense-analysis/ale' " Check syntax in Vim asyncronously
+
+	" Eye Candy
 	Plug 'bling/vim-airline'
+	Plug 'vim-airline/vim-airline-themes'
+
+	" Reading
 	Plug 'junegunn/goyo.vim'
+	Plug 'jez/vim-superman'
+
+	" Themes https://github.com/vim-airline/vim-airline/wiki/Screenshots
+	Plug 'habamax/vim-colors-defnoche'
+	Plug 'joshdick/onedark.vim'
+	Plug 'tomasiser/vim-code-dark'
+	Plug 'drewtempelmeyer/palenight.vim'
+
 
 " Python
 	Plug 'davidhalter/jedi-vim'
 
-" Productivity
-	Plug 'scrooloose/nerdtree'
-	Plug 'vimwiki/vimwiki'
+" CSS
 	Plug 'ap/vim-css-color'
 
 " LaTeX
@@ -29,53 +73,39 @@ call plug#begin('~/.config/nvim/plugged')
 "	Plug 'lervag/vimtex'
 
 " Git
-	Plug 'airblade/vim-gitgutter'  " Slows down moving left w/ space and h
-	Plug 'jreybert/vimagit'
-
-" Vim Terminal
+"	Plug 'airblade/vim-gitgutter'  " Slows down moving left w/ space and h
+"	Plug 'jreybert/vimagit'
 
 " Quality of Life
-"	Plug 'tpope/vim-surround'
-" 	Plug 'evandew/supertab'
+	Plug 'tpope/vim-surround'
 
 " Snippets
-	Plug 'honza/vim-snippets'
-	Plug 'SirVer/ultisnips'
-	Plug 'sheerun/vim-polyglot'
+"	Plug 'honza/vim-snippets'
+"	Plug 'SirVer/ultisnips'
+"	Plug 'sheerun/vim-polyglot'
 
 " Auto Complete
-"	Plug 'ycm-core/YouCompleteMe'  " This is a long read
-
-" Style and Corrections
-"   Plug 'vim-syntastic/syntastic'
+ 	Plug 'ycm-core/YouCompleteMe'  " This is a long read
 
 " Search
-"	Plug 'ggreer/the_silver_searcher'
-" 	Plug 'mileszs/ack.vim'
-"	Plug 'junegunn/fzf.vim'
+ 	Plug 'mileszs/ack.vim'
+	Plug 'junegunn/fzf.vim'
 
-" Language Syntax
+" Config Syntax
 	Plug 'kovetskiy/sxhkd-vim'
 
 call plug#end()
 
-"" vim-airline https://github.com/vim-airline/vim-airline
-	let g:airline#extensions#tabline#enabled = 1
-	let g:airline#extensions#tabline#left_sep = ' '
-	let g:airline#extensions#tabline#left_alt_sep = '|'
-	let g:airline#extensions#tabline#formatter = 'unique_tail'
-	let g:airline_powerline_fonts = 1
-
 " vimwiki
 	let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 	let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
+   	let g:vimwiki_map_prefix ='<leader>W'
 
 " disable gitgutter keys
 	let g:gitgutter_map_keys = 0
 
-" Nerd tree
-	map <silent> <leader>n :NERDTreeToggle<CR>
-	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" add ag/the_silver_searcher to ack
+	let g:ackprg = 'ag --nogroup --nocolor --column'
 
 "" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 ""let g:UltiSnipsExpandTrigger="<tab>"
@@ -98,7 +128,7 @@ call plug#end()
 
 " fzf https://github.com/junegunn/fzf.vim
 "" [Buffers] Jump to the existing window if possible
-"	let g:fzf_buffers_jump = 1
+	let g:fzf_buffers_jump = 1
 "
 "" [[B]Commits] Customize the options used by 'git log':
 "	let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
@@ -109,3 +139,26 @@ call plug#end()
 "" [Commands] --expect expression for directly executing the command
 "	let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 
+" vim-pair
+	let g:pair_toggle_key = "<Leader>pt"
+	let g:pair_fly_key = "<Tab>"
+	let g:pair_enable_cr_mapping = v:true
+	let g:pair_enable_bs_mapping = v:true
+	let g:pair_enable_space_mapping = v:true
+	let g:pair_enable_fly_key_mapping = v:true
+	let g:pair_enable_toggle_key_mapping = v:true
+	let g:pair_enable_visual_mode_mapping = v:true
+	let g:pair_enable_fly_key_mapping = v:false
+
+	function! s:Tab()
+	  if pumvisible()
+	    return "\<C-Y>"
+	  else
+	    return g:PairFly()
+	  endif
+	endfunction
+
+	inoremap <silent> <expr> <Tab> <SID>Tab()
+
+" easy motion
+	nmap s <Plug>(easymotion-s)

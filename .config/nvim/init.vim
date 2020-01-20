@@ -1,160 +1,165 @@
-set nocompatible
-set number relativenumber
-set encoding=utf-8
-set autochdir
-set tabstop=4
-set autoindent
-set smartindent
-set copyindent
-set shiftwidth=4
-set shiftround
-set showmatch
-set ignorecase
-set smartcase
-set smarttab
-set nowrap
-set splitbelow splitright
-set mouse=a
-set nohls
-set hidden
-set modifiable
-set incsearch
-set showcmd
-set clipboard+=unnamedplus
-set ruler
-set linebreak
+" Source other two files
+	so $NVIMPATH/plugin.vim
+	so $NVIMPATH/autocmd.vim
 
-set nobackup
-set nowb
-set noswapfile
+" General Settings
+	set autochdir
+	set clipboard+=unnamedplus
+	set encoding=utf-8
+	set hidden
+	set mouse=a
+	set nocompatible
+	set number relativenumber
+	set showmatch
+	set splitbelow splitright
 
-" Height of the command bar
-set cmdheight=1
+" Tabs and indentation
+	set autoindent
+	set copyindent
+	set shiftround
+	set shiftwidth=4
+	set smartindent
+	set smarttab
+	set tabstop=4
 
-" Don't redraw while executing macros (good performance config)
-set lazyredraw
+" Text formating
+	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+	autocmd BufWritePre * %s/\s\+$//e
+	set nowrap
+	set linebreak
+	filetype plugin indent on
+
+" Syntax
+	syntax on
+	syntax enable
+
+" Bottom UI
+	set ruler
+	set showcmd
+	set cmdheight=1
+	set wildmenu
+"https://github.com/liuchengxu/vim-which-key
+" https://github.com/hecal3/vim-leader-guide
+" Disable backing up/vim version control
+	set nobackup
+	set nowb
+	set noswapfile
+
+" Reuse old undos
+	try
+		set undodir=~/.vim_runtime/temp_dirs/undodir
+		set undofile
+	catch
+	endtry
 
 " Set to auto read when a file is changed from the outside
-set autoread
-au FocusGained,BufEnter * checktime
+	set autoread
+	autocmd FocusGained,BufEnter * checktime
 
-" Add a bit extra margin to the left
-set foldcolumn=1
+" Searching (Disable highlight search after enter is pressed)
+	set ignorecase
+	set incsearch
+	set smartcase
+	set showmatch
+	set hls
+	nnoremap <silent><CR> :noh<CR><CR>
 
-" on search highlight until enter pressed second time
-set hls
-nnoremap <silent><CR> :noh<CR><CR>
+	set foldcolumn=1
 
-set wildmenu
-
-" cnoremap <Left> <Space><BS><Left>
-" cnoremap <Right> <Space><BS><Right>
-
-filetype plugin indent on
-syntax on
-syntax enable
-
-" Visual mode search
-vnoremap <silent> / :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
-vnoremap <silent> ? :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
-
-try
-    set undodir=~/.vim_runtime/temp_dirs/undodir
-    set undofile
-catch
-endtry
-
-" Check file in shellcheck:
-	map <leader>s :!clear && shellcheck %<CR>
-
-" Goyo plugin makes text more readable when writing prose:
-	map <leader>f :Goyo \| set bg=dark \| set linebreak<CR>
-
-" Spell-check set to <leader>o, 'o' for 'orthography':
-	map <leader>o :setlocal spell! spelllang=en_us<CR>
-
-" Replace all is aliased to S.
-	nnoremap <leader>S :%s//g<Left><Left>
-
-" Compile document, be it groff/LaTeX/markdown/etc.
-	map <leader>c :w! \| !compiler <c-r>%<CR>
-
-" Open corresponding .pdf/.html or preview
-	map <leader>p :!opout <c-r>%<CR><CR>
-
-" Copy selected text to system clipboard:
-	vnoremap <C-c> "+y
-
-" easy command mode
-	nnoremap ; :
-
-" easy command mode
+" Remapping some vim defaults
 	nnoremap Y y$
+	" nnoremap ; :
 
-" Vim Wiki
-	map <leader>v :VimwikiIndex
+" Set leader as <Space> and set WhichKey
+	" set notimeout
+	let g:mapleader = " "
+	let g:maplocalleader = " "
+	nnoremap <silent> <leader>      :WhichKey '<Space>'<CR>
+	nnoremap <silent> <localleader> :WhichKey  '<Space>'<CR>
+"	let g:which_key_map
 
-" Set leader as <SPACE>
-	nnoremap <SPACE> <Nop>
-	let mapleader="\<Space>"
-	let maplocalleader="\<Space>"
- 	nmap <silent> <Leader><Leader> :bnext <cr>
+	let g:which_key_map = {}
 
-" sudo writes file when you forget
-	cmap w!! w !sudo tee > /dev/null %
+	let g:which_key_map.b = 'which_key_ignore'
+	let g:which_key_map.Up = 'which_key_ignore'
+	let g:which_key_map.Right = 'which_key_ignore'
+	let g:which_key_map.Left = 'which_key_ignore'
+	let g:which_key_map.Down = 'which_key_ignore'
 
-" pull up terminal
-	tnoremap <Esc><Esc> <c-\><c-n>
-	nnoremap <silent> <leader>t :call ToggleTerminal() <cr>
+	let g:which_key_map.SUp = 'which_key_ignore'
+	let g:which_key_map.SRight = 'which_key_ignore'
+	let g:which_key_map.SLeft = 'which_key_ignore'
+	let g:which_key_map.SDown = 'which_key_ignore'
 
+" Buffer Nav
+	nnoremap <silent> <leader>bb :Buffers <cr>
+ 	nnoremap <silent> <Leader>bn :bnext  <cr>
+ 	nnoremap <silent> <Leader>bp :bprevious <cr>
+ 	nnoremap <silent> <Leader>bd :bdelete <cr>
 
-	function! ToggleTerminal()
-		if !exists("g:termname")
-			execute 'sp | res 10 | term'
-			let g:termname = bufname()
-		else
-			execute 'bunload!' g:termname
-			unlet g:termname
-		endif
-	endfunction
+	" nnoremap <silent> <localleader> :<c-u>WhichKey ']'<CR>
+	" nnoremap <silent> <localleader> :<c-u>WhichKey '['<CR>
+	" nnoremap <silent> <localleader> :<c-u>WhichKey 'g'<CR>
+	" nnoremap <silent> <localleader> :<c-u>WhichKey 'c'<CR>
+	set timeoutlen=500
 
 " quit,write,
-	nmap <leader>w :w <cr>
-	nmap <leader>wq :wq <cr>
-	nmap <leader>W :w!! <cr>
-	nmap <leader>q :q <cr>
-	nmap <leader>Q :q! <cr>
+	" nmap <leader>q :q <cr>
+	" nmap <leader>w :w! <cr>
 
-" Simplify window movment
-	map <C-h> <C-w>h
-	map <C-j> <C-w>j
-	map <C-k> <C-w>k
-	map <C-l> <C-w>l
+" space window nav
+	nnoremap <leader>h <c-w>h
+	nnoremap <leader>j <c-w>j
+	nnoremap <leader>k <c-w>k
+	nnoremap <leader>l <c-w>l
 
-	nmap <leader>h  <C-w>h
-	nmap <leader>j  <C-w>j
-	nmap <leader>k  <C-w>k
-	nmap <leader>l  <C-w>l
+" Goyo plugin makes text more readable when writing prose:
+"	map <leader>f :Goyo \| set bg=dark \| set linebreak<CR>
 
-" source plugins, autostart/close commands and themes
-	source $HOME/.config/nvim/plugin.vim
-	source $HOME/.config/nvim/autocmd.vim
-	source $HOME/.config/nvim/theme.vim
+" Visual mode search
+	vnoremap <silent> / :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
+	vnoremap <silent> ? :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
-" Functions
+" Nerd tree
+	map <silent> <leader>n :NERDTreeToggle<CR>
+	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+"" vim-airline https://github.com/vim-airline/vim-airline
+
+" File nav
+	nnoremap <silent> <leader>fr :History <cr>
+	nnoremap <silent> <leader>ff :Files <cr>
+
+	silent! call repeat#set("g>vim-repeat", v:count)
+
+
+" THEMES
+" https://vimcolors.com/
+	let g:airline#extensions#tabline#left_sep = ' '
+	let g:airline#extensions#tabline#left_alt_sep = '|'
+	let g:airline#extensions#tabline#formatter = 'unique_tail'
+	let g:airline_powerline_fonts = 1
+	let g:airline_left_sep=''
+	let g:airline_right_sep=''
+
 function! VisualSelection(direction, extra_filter) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
+	let l:saved_reg = @"
+	execute "normal! vgvy"
 
-    let l:pattern = escape(@", "\\/.*'$^~[]")
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
+	let l:pattern = escape(@", "\\/.*'$^~[]")
+	let l:pattern = substitute(l:pattern, "\n$", "", "")
 
-    if a:direction == 'gv'
-        call CmdLine("Ack '" . l:pattern . "' " )
-    elseif a:direction == 'replace'
-        call CmdLine("%s" . '/'. l:pattern . '/')
-    endif
+	if a:direction == 'gv'
+		call CmdLine("Ack '" . l:pattern . "' " )
+	elseif a:direction == 'replace'
+		call CmdLine("%s" . '/'. l:pattern . '/')
+	endif
 
-    let @/ = l:pattern
-    let @" = l:saved_reg
+	let @/ = l:pattern
+	let @" = l:saved_reg
 endfunction
+
+" theme
+	colorscheme defnoche
+	let g:airline_theme='minimalist'
+	hi Normal guibg=NONE ctermbg=NONE
