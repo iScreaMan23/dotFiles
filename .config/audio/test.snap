@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aj-snapshot>
+<alsa>
+  <client name="System">
+    <port id="0" />
+    <port id="1" />
+  </client>
+  <client name="Midi Through">
+    <port id="0" />
+  </client>
+  <client name="Scarlett 2i4 USB">
+    <port id="0" />
+  </client>
+</alsa>
+<jack>
+  <client name="system">
+    <port name="capture_1">
+      <connection port="PulseAudio JACK Source:front-left" />
+    </port>
+    <port name="capture_2">
+      <connection port="PulseAudio JACK Source:front-right" />
+    </port>
+  </client>
+  <client name="Firefox">
+    <port name="AudioStream_0_out_0">
+      <connection port="system:playback_1" />
+      <connection port="system:playback_3" />
+    </port>
+    <port name="AudioStream_0_out_1">
+      <connection port="system:playback_2" />
+      <connection port="system:playback_4" />
+    </port>
+  </client>
+  <client name="PulseAudio JACK Sink">
+    <port name="front-left">
+      <connection port="system:playback_1" />
+    </port>
+    <port name="front-right">
+      <connection port="system:playback_2" />
+    </port>
+    <port name="rear-left">
+      <connection port="system:playback_3" />
+    </port>
+    <port name="rear-right">
+      <connection port="system:playback_4" />
+    </port>
+  </client>
+</jack>
+</aj-snapshot>

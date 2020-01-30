@@ -1,0 +1,34 @@
+#!/bin/sh
+
+alsa_in -d hw:HDMI_4 &
+
+
+obs &
+
+sleep 2
+
+jack_connect alsa_in:capture_1 'ardour:Switch/audio_in 1'
+jack_connect alsa_in:capture_2 'ardour:Switch/audio_in 2'
+
+jack_connect 'ardour:Firefox/audio_out 1' 'Firefox Audio:in_1'
+jack_connect 'ardour:Firefox/audio_out 2' 'Firefox Audio:in_2'
+
+jack_connect 'ardour:Switch/audio_out 1' 'Switch Audio:in_1'
+jack_connect 'ardour:Switch/audio_out 2' 'Switch Audio:in_2'
+
+jack_connect system:capture_1 'ardour:Mic/audio_in 1'
+jack_connect 'ardour:Mic/audio_out 1' 'Primary Mic:in_1'
+jack_connect 'ardour:Mic/audio_out 1' 'Primary Mic:in_2'
+
+jack_connect system:capture_2 'ardour:Lav/audio_in 1'
+jack_connect 'ardour:Lav/audio_out 1' 'Lav Mic:in_1'
+jack_connect 'ardour:Lav/audio_out 1' 'Lav Mic:in_2'
+
+jack_connect 'ardour:Steam/audio_out 1' 'Steam Audio:in_1'
+jack_connect 'ardour:Steam/audio_out 2' 'Steam Audio:in_2'
+
+jack_connect 'ardour:MPD/audio_out 1' 'MPD Audio:in_1'
+jack_connect 'ardour:MPD/audio_out 2' 'MPD Audio:in_2'
+
+sh $HOME/twitch/phantombot/launch.sh &
+firefox --new-window localhost:25000/panel

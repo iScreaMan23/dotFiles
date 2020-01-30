@@ -3,23 +3,31 @@
 # oh-my-zsh: https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins
 # awesome-zsh-plugins: https://github.com/unixorn/awesome-zsh-plugins
 # for later maybe? https://github.com/psprint/zsh-navigation-tools
-[ -f "$HOME/.zplug/init.zsh" ] && source ~/.zplug/init.zsh
 [ -f "$HOME/.profile" ] && source "$HOME/.profile"
 [ -f "$HOME/.local/bin/z.sh" ] && source "$HOME/.local/bin/z.sh"
+
+
+# SET THIS UP BECAUSE YOU NEVER FINISHED WITH IT!
 [ -f "$HOME/.zplug/repos/hchbaw/auto-fu.zsh" ] && source "$HOME/repos/hchbaw/auto-fu.zsh.local/bin/z.sh"
 
+
+[ -f "$HOME/.zplug/init.zsh" ] && source ~/.zplug/init.zsh
 if [[ ! -d ~/.zplug ]];then
     git clone https://github.com/b4b4r07/zplug ~/.zplug
 fi
 
+zplug "akoenig/npm-run.plugin.zsh"
+zplug "zpm-zsh/ssh"
+zplug "srijanshetty/zsh-pip-completion"
 zplug "changyuheng/zsh-interactive-cd"
 zplug "zpm-zsh/colorize"
 zplug "ael-code/zsh-colored-man-pages"
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "psprint/zsh-navigation-tools"
 zplug "hchbaw/auto-fu.zsh"
 zplug "hlissner/zsh-autopair"
-zplug "zsh-users/zsh-autosuggestions"
 zplug "changyuheng/fz", defer:1
 zplug "rupa/z", use:z.sh
 zplug "softmoth/zsh-vim-mode"
@@ -27,7 +35,13 @@ zplug "kutsan/zsh-system-clipboard"
 zplug "lib/completion", from:oh-my-zsh
 zplug "lib/history", from:oh-my-zsh
 zplug "zsh-vi-more/evil-registers"
+
 zplug load
+
+# if [[ ! -f ~/.zpm/zpm.zsh ]]; then
+#   git clone --recursive https://github.com/zpm-zsh/zpm ~/.zpm
+# fi
+# source ~/.zpm/zpm.zsh
 
 
 # Use vim keys in tab complete menu:
@@ -36,6 +50,9 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v
+bindkey -M command '^[' send-break
+bindkey -M vicmd v edit-command-line
+bindkey '^?' backward-delete-char
 bindkey '^r' history-incremental-search-backward
 
 export KEYTIMEOUT=1
