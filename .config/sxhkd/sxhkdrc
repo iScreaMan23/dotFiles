@@ -62,9 +62,9 @@ XF86MonBrightnessUp
 
 ## Audiokeys
 XF86AudioMute
-	mute
+	amixer set 'Master' toggle
 XF86AudioRaiseVolume
-	volumeUp
+	amixer set 'Master' 5%+
 XF86AudioLowerVolume
-	volumeDown
+	amixer set 'Master' 5%-
 

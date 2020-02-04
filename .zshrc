@@ -30,12 +30,14 @@ zplug "zsh-vi-more/evil-registers"
 zplug load
 
 
+zstyle ':completion:*' menu select
+zmodload zsh/complist
 # Use vim keys in tab complete menu:
+bindkey -v
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -v
 bindkey '^r' history-incremental-search-backward
 
 export KEYTIMEOUT=1

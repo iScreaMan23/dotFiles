@@ -9,9 +9,6 @@ xset r rate 200 50
 unclutter --timeout 3 --jitter 75 --ignore-scrolling &
 
 . $HOME/.localConfig
-compton &
-source .fehbg
-
 
 compton --backend glx --blur-method kawase --blur-strength 5 --blur-background
 

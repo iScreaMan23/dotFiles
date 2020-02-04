@@ -4,7 +4,7 @@
 export PATH="$PATH:$HOME/.config/sxhkd/bin:$HOME/bin"
 export NVIMPATH="$HOME/.config/nvim"
 
-alias gitdot='/usr/bin/git --git-dir=$HOME/dotFiles/ --work-tree=$HOME'
+alias gitdot='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias vi="nvim"
 alias sxhkdrc="vi $HOME/.config/sxhkd/sxhkdrc"
 alias vimrc="vi $NVIMPATH/init.vim $NVIMPATH/plugin.vim $NVIMPATH/theme.vim $NVIMPATH/autocmd.vim"
