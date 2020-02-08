@@ -602,6 +602,8 @@ void
 selclear_(XEvent *e)
 {
 	selclear();
+
+	xclipcopy();
 }
 
 void

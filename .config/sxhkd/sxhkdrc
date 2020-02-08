@@ -35,7 +35,14 @@ super + shift + {h,j,k,l}
 	bspwm_smart_move {west,south,north,east}
 super + control + {h,j,k,l}
 	bspwm_resize {west,south,north,east} 50
-
+super + {t,f}
+	bspc node -t {tiled,floating}
+super + b
+	togglepolybar
+super + u
+	bspc config top_padding 0
+Print
+	deepin-screenshot
 #=========#
 # Scripts #
 #=========#
@@ -48,8 +55,8 @@ super + control + {h,j,k,l}
 #==========#
 super + Return
 	$TERMINAL
-super + o; {w,d}
-	{firefox,discord}
+super + o; {w,d,s,o,g,c,r,e}
+	{apstart firefox, apstart discord,apstart startSteam, apstart start_obs, gimp, cadence, apstart retroarch, emacsclient -c}
 
 #====================#
 # Hardware Functions #

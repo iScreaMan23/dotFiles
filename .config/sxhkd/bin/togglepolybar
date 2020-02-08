@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if [ -z "$(pidof polybar)" ]
+then
+	polybar $(cat /etc/hostname)
+else
+	kill $(pidof polybar)
+	while [ -n "$(pidof polybar)" ]
+	do
+		wait
+	done
+	bspc config top_padding 0
+fi

@@ -21,20 +21,20 @@
 
 !Map ShiftR to Backspace and Delete
     keycode 62 = BackSpace Delete
-    keycode 22 = BackSpace BackSpace   
+    keycode 22 = BackSpace BackSpace
 
 !Map Alt_R to Escape clear escape
     keycode 108 = Escape Meta_R
-    keycode 9 = Escape Escape 
+    keycode 9 = Escape Escape
 
 !reassign Alt_L and/or Alt_R to ModeSwitch
-    keycode 64 = Mode_switch Mode_switch 
+    keycode 64 = Mode_switch Mode_switch
 
 !reassign Control_R to num_lock
     keycode 105 = Hyper_L
 
 !reassign Control_R to num_lock
-    keycode 118 = 1 2 3 4 5 6 7 8 9 
+    keycode 118 = 1 2 3 4 5 6 7 8 9
 
 !set mod keys
     add shift = Shift_L

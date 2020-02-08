@@ -90,10 +90,18 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 font-3 = Noto Color Emoji:scale=10;2
 
+<<<<<<< HEAD
 modules-left = bspwm i3
 modules-center = mpd
 modules-right = powermenu xbacklight alsa pulseaudio memory cpu wlan eth battery temperature date time
 ;
+=======
+modules-left = bspwm
+; modules-center = mpd
+modules-right = memory cpu date time
+;modules-right = powermenu xbacklight alsa pulseaudio memory cpu wlan eth battery temperature date time
+
+>>>>>>> 6a939c536f1bac0345d0989bff4d9110746d1a39
 tray-position = right
 tray-padding = 2
 ;tray-background = #0063ff

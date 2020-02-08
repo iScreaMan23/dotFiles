@@ -1,0 +1,44 @@
+#!/bin/sh
+
+jack_control ds alsa
+jack_control dps device hw:USB
+jack_control dps rate 48000
+jack_control dps nperiods 2
+jack_control dps period 256
+jack_control start
+
+ardour5 ~/.config/audio/audioDefault/audioDefault.ardour &
+
+jack_disconnect system:capture_1 'ardour:LTC-in'
+jack_disconnect system:capture_1 'ardour:Mic/audio_in 2'
+jack_disconnect system:capture_1 'ardour:Lav/audio_in 2'
+jack_disconnect system:capture_1 'ardour:Firefox/audio_in 2'
+jack_disconnect system:capture_1 'ardour:Switch/audio_in 2'
+jack_disconnect system:capture_1 'ardour:Discord/audio_in 2'
+jack_disconnect system:capture_1 'ardour:Steam/audio_in 2'
+jack_disconnect system:capture_1 'ardour:RetroArch/audio_in 2'
+jack_disconnect system:capture_1 'ardour:MPD/audio_in 1'
+
+jack_disconnect system:capture_2 'ardour:Mic/audio_in 1'
+jack_disconnect system:capture_2 'ardour:Lav/audio_in 1'
+jack_disconnect system:capture_2 'ardour:Firefox/audio_in 1'
+jack_disconnect system:capture_2 'ardour:Switch/audio_in 1'
+jack_disconnect system:capture_2 'ardour:Discord/audio_in 1'
+jack_disconnect system:capture_2 'ardour:Steam/audio_in 1'
+jack_disconnect system:capture_2 'ardour:RetroArch/audio_in 1'
+jack_disconnect system:capture_2 'ardour:MPD/audio_in 2'
+
+jack_disconnect 'ardour:Lav/audio_out 2' 'ardour:Master/audio_in 2'
+jack_disconnect 'ardour:Lav/audio_out 1' 'ardour:Master/audio_in 1'
+
+jack_connect system:playback_3 'ardour:Master/audio_out 1'
+jack_connect system:playback_4 'ardour:Master/audio_out 2'
+
+#systemctl --user restart mpd.service
+#ncmpcpp &
+#
+#jack_disconnect 'Music Player Daemon:left' 'system:playback_1'
+#jack_disconnect 'Music Player Daemon:right' 'system:playback_2'
+#
+#jack_connect 'Music Player Daemon:left' 'ardour:MPD/audio_in 1'
+#jack_connect 'Music Player Daemon:right' 'ardour:MPD/audio_in 2'
