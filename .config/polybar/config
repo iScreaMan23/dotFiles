@@ -27,6 +27,41 @@ primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
+[bar/stealthtank]
+monitor = ${env:MONITOR:eDP1}
+width = 100%
+height = 27
+;offset-x = 1%
+;offset-y = 1%
+fixed-center = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 1
+line-color = #f00
+
+border-size = 1
+border-color = #222222
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = fixed:pixelsize=10;1
+font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-2 = siji:pixelsize=10;1
+font-3 = Noto Color Emoji:scale=10;2
+
+modules-left = bspwm i3
+modules-center = mpd
+modules-right = pulseaudio memory cpu wlan eth battery temperature date time
+
+tray-position = right
+tray-padding = 2
+;tray-background = #0063ff
 [bar/redeemer]
 monitor = ${env:MONITOR:DisplayPort-0}
 width = 100%
@@ -53,12 +88,20 @@ module-margin-right = 2
 font-0 = fixed:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
+font-3 = Noto Color Emoji:scale=10;2
 
+<<<<<<< HEAD
+modules-left = bspwm i3
+modules-center = mpd
+modules-right = powermenu xbacklight alsa pulseaudio memory cpu wlan eth battery temperature date time
+;
+=======
 modules-left = bspwm
 ; modules-center = mpd
 modules-right = memory cpu date time
 ;modules-right = powermenu xbacklight alsa pulseaudio memory cpu wlan eth battery temperature date time
 
+>>>>>>> 6a939c536f1bac0345d0989bff4d9110746d1a39
 tray-position = right
 tray-padding = 2
 ;tray-background = #0063ff
@@ -136,7 +179,7 @@ interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #f90000
-label = %percentage:2%%
+label = 🤖 %percentage:2%%
 
 [module/memory]
 type = internal/memory
@@ -144,7 +187,7 @@ interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #4bffdc
-label = %percentage_used%%
+label = 🧠 %percentage_used%%
 
 [module/wlan]
 type = internal/network
@@ -153,7 +196,7 @@ interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #9f78e1
-label-connected = %essid%
+label-connected = 📶 %essid%
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
@@ -187,7 +230,7 @@ format-disconnected =
 [module/date]
 type = internal/date
 interval = 5
-date = %a %b %d
+date = 📅  %a %b %d
 
 format-underline = #55aa55
 
@@ -195,9 +238,9 @@ format-underline = #55aa55
 type = internal/date
 interval = 5
 
-time = %I:%M %p
+time = 🕓 %I:%M %p
 
-format-prefix = 🕓
+format-prefix =
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #0a6cf5
 
@@ -206,29 +249,33 @@ label = %date% %time%
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL %percentage%%
+format-volume = <ramp-volume> <label-volume>
+label-volume = %percentage%%
 label-volume-foreground = ${root.foreground}
+format-volume-underline = #0a6cf5
+
 
 label-muted = 🔇 muted
 label-muted-foreground = #666
-
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
+ramp-volume-0 = 🔈
+ramp-volume-1 = 🔉
+ramp-volume-2 = 🔊
+# bar-volume-width = 10
+# bar-volume-foreground-0 = #55aa55
+# bar-volume-foreground-1 = #55aa55
+# bar-volume-foreground-2 = #55aa55
+# bar-volume-foreground-3 = #55aa55
+# bar-volume-foreground-4 = #55aa55
+# bar-volume-foreground-5 = #f5a70a
+# bar-volume-foreground-6 = #ff5555
+# bar-volume-gradient = true
+# bar-volume-indicator =
+# bar-volume-indicator-font = 2
+# bar-volume-fill = ─
+# bar-volume-fill-font = 2
+# bar-volume-empty = ─
+# bar-volume-empty-font = 2
+# bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/alsa]
 type = internal/alsa
@@ -263,6 +310,7 @@ type = internal/battery
 battery = BAT0
 adapter = ADP1
 full-at = 98
+label-discharging = 🔋 %percentage%%
 
 format-charging = <animation-charging> <label-charging>
 format-charging-underline = #ffb52a
@@ -301,7 +349,7 @@ format-underline = #f50a4d
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 
-label = %temperature-c%
+label = 🌡️ %temperature-c%
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
