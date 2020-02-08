@@ -6,14 +6,15 @@ sxhkd &
 
 #### MONITORS ####
 bspc monitor DisplayPort-0 -d 1 2 3
-bspc monitor DisplayPort-1 -d 5 6 7
-bspc monitor DisplayPort-2 -d 7 8 9
+bspc monitor DisplayPort-1 -d 4 5
+bspc monitor HDMI-A-0 -d 6 7 8
+bspc monitor DisplayPort-2 -d 9 0
 
 #### BSPWM configuration ####
 #bspc config border_radius                8
 bspc config border_width                  2
-bspc config window_gap                    10
-bspc config top_padding                   20
+bspc config window_gap                    5
+bspc config top_padding                   0
 bspc config bottom_padding                0
 bspc config left_padding                  0
 bspc config right_padding                 0
@@ -44,11 +45,14 @@ bspc config urgent_border_color 	      "#dd2727"
 #find out the name of your monitor with xrandr
 xdo below -t $(xdo id -n root) $(xdo id -a polybar-main_DisplayPort-0)
 xdo below -t $(xdo id -n root) $(xdo id -a polybar-main_DisplayPort-1)
-xdo below -t $(xdo id -n root) $(xdo id -a polybar-main_HDMI-A-0)
+xdo below -t $(xdo id -n root) $(xdo id -a polybar-main_DisplayPort-2)
 
-bspc rule -a obs desktop='^5' follow=on
-bspc rule -a Gimp desktop='^7' follow=on
-bspc rule -a Chromium desktop='^2'
+bspc rule -a obs monitor='^2' follow=on
+bspc rule -a Gimp desktop='^0' follow=on
+bspc rule -a Ardour monitor='^4' follow=off
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
+bspc rule -a \* state=tiled
+
+bspc config ignore_ewmh_fullscreen none
