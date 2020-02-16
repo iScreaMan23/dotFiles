@@ -1,2 +1,0 @@
-jack_connect 'PulseAudio JACK Sink:front-right' 'ardour:Firefox/audio_in 2'
-jack_connect 'PulseAudio JACK Sink:front-left' 'ardour:Firefox/audio_in 1'

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aj-snapshot>
+<alsa>
+  <client name="System">
+    <port id="0" />
+    <port id="1" />
+  </client>
+  <client name="Midi Through">
+    <port id="0" />
+  </client>
+  <client name="Scarlett 2i4 USB">
+    <port id="0" />
+  </client>
+</alsa>
+<jack>
+  <client name="system">
+    <port name="capture_1">
+      <connection port="Mic in:Audio Input 1" />
+      <connection port="Mic in:Audio Input 2" />
+    </port>
+    <port name="capture_2">
+      <connection port="Lav In:Audio Input 2" />
+      <connection port="Lav In:Audio Input 1" />
+    </port>
+  </client>
+  <client name="Mic in">
+    <port name="Audio Output 1">
+      <connection port="Mic:in_1" />
+    </port>
+    <port name="Audio Output 2">
+      <connection port="Mic:in_2" />
+    </port>
+    <port name="events-out" />
+  </client>
+  <client name="Lav In">
+    <port name="Audio Output 1">
+      <connection port="Lav:in_1" />
+    </port>
+    <port name="Audio Output 2">
+      <connection port="Lav:in_2" />
+    </port>
+    <port name="events-out" />
+  </client>
+  <client name="Music In">
+    <port name="Audio Output 1">
+      <connection port="Master Volume:Audio Input 1" />
+      <connection port="Music:in_1" />
+    </port>
+    <port name="Audio Output 2">
+      <connection port="Master Volume:Audio Input 2" />
+      <connection port="Music:in_2" />
+    </port>
+    <port name="events-out" />
+  </client>
+  <client name="Discord In">
+    <port name="Audio Output 1">
+      <connection port="Master Volume:Audio Input 1" />
+      <connection port="Discord:in_1" />
+    </port>
+    <port name="Audio Output 2">
+      <connection port="Master Volume:Audio Input 2" />
+      <connection port="Discord:in_2" />
+    </port>
+    <port name="events-out" />
+  </client>
+  <client name="Game In">
+    <port name="Audio Output 1">
+      <connection port="Master Volume:Audio Input 1" />
+      <connection port="Game:in_1" />
+    </port>
+    <port name="Audio Output 2">
+      <connection port="Master Volume:Audio Input 2" />
+      <connection port="Game:in_2" />
+    </port>
+    <port name="events-out" />
+  </client>
+  <client name="Firefox In">
+    <port name="Audio Output 1">
+      <connection port="Master Volume:Audio Input 1" />
+      <connection port="Firefox:in_1" />
+    </port>
+    <port name="Audio Output 2">
+      <connection port="Master Volume:Audio Input 2" />
+      <connection port="Firefox:in_2" />
+    </port>
+    <port name="events-out" />
+  </client>
+  <client name="Master Volume">
+    <port name="Audio Output 1">
+      <connection port="system:playback_1" />
+      <connection port="system:playback_3" />
+    </port>
+    <port name="Audio Output 2">
+      <connection port="system:playback_2" />
+      <connection port="system:playback_4" />
+    </port>
+  </client>
+</jack>
+</aj-snapshot>

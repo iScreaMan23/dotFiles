@@ -1,0 +1,44 @@
+pcm.!default {
+    type plug
+    slave { pcm "retroarch" }
+}
+
+pcm.jack {
+    type jack
+    playback_ports {
+        0 system:playback_3
+        1 system:playback_4
+    }
+    capture_ports {
+        0 system:capture_1
+        1 system:capture_2
+    }
+}
+
+pcm.retroarch {
+    type jack
+    playback_ports {
+        0 system:playback_3
+        1 system:playback_4
+    }
+    capture_ports {
+        0 system:capture_1
+        1 system:capture_2
+    }
+}
+
+pcm.firefox {
+    type jack
+    playback_ports {
+        0 system:playback_1
+        1 system:playback_2
+    }
+    capture_ports {
+        0 system:capture_1
+        1 system:capture_2
+    }
+}
+ctl.mixer0 {
+    type hw
+    card 0
+}

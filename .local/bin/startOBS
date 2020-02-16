@@ -1,7 +1,0 @@
-#!/bin/sh
-obs &
-sleep 2
-aj-snapshot -r ~/.config/audio/obsConfig &
-
-sh "$HOME/twitch/phantombot/launch.sh" &
-apstart firefox --new-window localhost:25000/panel

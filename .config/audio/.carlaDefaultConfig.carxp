@@ -1,0 +1,419 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE CARLA-PROJECT>
+<CARLA-PROJECT VERSION='2.0'>
+ <EngineSettings>
+  <ForceStereo>false</ForceStereo>
+  <PreferPluginBridges>false</PreferPluginBridges>
+  <PreferUiBridges>true</PreferUiBridges>
+  <UIsAlwaysOnTop>false</UIsAlwaysOnTop>
+  <MaxParameters>200</MaxParameters>
+  <UIBridgesTimeout>4000</UIBridgesTimeout>
+ </EngineSettings>
+
+ <Transport>
+  <BeatsPerMinute>120</BeatsPerMinute>
+ </Transport>
+
+ <!-- Carla-Rack -->
+ <Plugin>
+  <Info>
+   <Type>LV2</Type>
+   <Name>Mic in</Name>
+   <URI>http://kxstudio.sf.net/carla/plugins/carlarack</URI>
+  </Info>
+
+  <Data>
+   <Active>Yes</Active>
+   <ControlChannel>1</ControlChannel>
+   <Options>0x3f1</Options>
+
+   <CustomData>
+    <Type>http://lv2plug.in/ns/ext/atom#String</Type>
+    <Key>http://kxstudio.sf.net/ns/carla/chunk</Key>
+    <Value>
+&lt;?xml version=&apos;1.0&apos; encoding=&apos;UTF-8&apos;?&gt;
+&lt;!DOCTYPE CARLA-PROJECT&gt;
+&lt;CARLA-PROJECT VERSION=&apos;2.0&apos;&gt;
+ &lt;EngineSettings&gt;
+  &lt;ForceStereo&gt;true&lt;/ForceStereo&gt;
+  &lt;PreferPluginBridges&gt;false&lt;/PreferPluginBridges&gt;
+  &lt;PreferUiBridges&gt;false&lt;/PreferUiBridges&gt;
+  &lt;UIsAlwaysOnTop&gt;true&lt;/UIsAlwaysOnTop&gt;
+  &lt;MaxParameters&gt;200&lt;/MaxParameters&gt;
+  &lt;UIBridgesTimeout&gt;4000&lt;/UIBridgesTimeout&gt;
+  &lt;LADSPA_PATH&gt;&lt;/LADSPA_PATH&gt;
+  &lt;DSSI_PATH&gt;&lt;/DSSI_PATH&gt;
+  &lt;LV2_PATH&gt;&lt;/LV2_PATH&gt;
+  &lt;VST2_PATH&gt;&lt;/VST2_PATH&gt;
+  &lt;VST3_PATH&gt;&lt;/VST3_PATH&gt;
+  &lt;SF2_PATH&gt;&lt;/SF2_PATH&gt;
+  &lt;SFZ_PATH&gt;&lt;/SFZ_PATH&gt;
+ &lt;/EngineSettings&gt;
+&lt;/CARLA-PROJECT&gt;
+
+    </Value>
+   </CustomData>
+  </Data>
+ </Plugin>
+
+ <!-- Carla-Rack -->
+ <Plugin>
+  <Info>
+   <Type>LV2</Type>
+   <Name>Lav In</Name>
+   <URI>http://kxstudio.sf.net/carla/plugins/carlarack</URI>
+  </Info>
+
+  <Data>
+   <Active>Yes</Active>
+   <ControlChannel>1</ControlChannel>
+   <Options>0x3f1</Options>
+
+   <CustomData>
+    <Type>http://lv2plug.in/ns/ext/atom#String</Type>
+    <Key>http://kxstudio.sf.net/ns/carla/chunk</Key>
+    <Value>
+&lt;?xml version=&apos;1.0&apos; encoding=&apos;UTF-8&apos;?&gt;
+&lt;!DOCTYPE CARLA-PROJECT&gt;
+&lt;CARLA-PROJECT VERSION=&apos;2.0&apos;&gt;
+ &lt;EngineSettings&gt;
+  &lt;ForceStereo&gt;true&lt;/ForceStereo&gt;
+  &lt;PreferPluginBridges&gt;false&lt;/PreferPluginBridges&gt;
+  &lt;PreferUiBridges&gt;false&lt;/PreferUiBridges&gt;
+  &lt;UIsAlwaysOnTop&gt;true&lt;/UIsAlwaysOnTop&gt;
+  &lt;MaxParameters&gt;200&lt;/MaxParameters&gt;
+  &lt;UIBridgesTimeout&gt;4000&lt;/UIBridgesTimeout&gt;
+  &lt;LADSPA_PATH&gt;&lt;/LADSPA_PATH&gt;
+  &lt;DSSI_PATH&gt;&lt;/DSSI_PATH&gt;
+  &lt;LV2_PATH&gt;&lt;/LV2_PATH&gt;
+  &lt;VST2_PATH&gt;&lt;/VST2_PATH&gt;
+  &lt;VST3_PATH&gt;&lt;/VST3_PATH&gt;
+  &lt;SF2_PATH&gt;&lt;/SF2_PATH&gt;
+  &lt;SFZ_PATH&gt;&lt;/SFZ_PATH&gt;
+ &lt;/EngineSettings&gt;
+&lt;/CARLA-PROJECT&gt;
+
+    </Value>
+   </CustomData>
+  </Data>
+ </Plugin>
+
+ <!-- Carla-Rack -->
+ <Plugin>
+  <Info>
+   <Type>LV2</Type>
+   <Name>Music In</Name>
+   <URI>http://kxstudio.sf.net/carla/plugins/carlarack</URI>
+  </Info>
+
+  <Data>
+   <Active>Yes</Active>
+   <ControlChannel>1</ControlChannel>
+   <Options>0x3f1</Options>
+
+   <CustomData>
+    <Type>http://lv2plug.in/ns/ext/atom#String</Type>
+    <Key>http://kxstudio.sf.net/ns/carla/chunk</Key>
+    <Value>
+&lt;?xml version=&apos;1.0&apos; encoding=&apos;UTF-8&apos;?&gt;
+&lt;!DOCTYPE CARLA-PROJECT&gt;
+&lt;CARLA-PROJECT VERSION=&apos;2.0&apos;&gt;
+ &lt;EngineSettings&gt;
+  &lt;ForceStereo&gt;true&lt;/ForceStereo&gt;
+  &lt;PreferPluginBridges&gt;false&lt;/PreferPluginBridges&gt;
+  &lt;PreferUiBridges&gt;false&lt;/PreferUiBridges&gt;
+  &lt;UIsAlwaysOnTop&gt;true&lt;/UIsAlwaysOnTop&gt;
+  &lt;MaxParameters&gt;200&lt;/MaxParameters&gt;
+  &lt;UIBridgesTimeout&gt;4000&lt;/UIBridgesTimeout&gt;
+  &lt;LADSPA_PATH&gt;&lt;/LADSPA_PATH&gt;
+  &lt;DSSI_PATH&gt;&lt;/DSSI_PATH&gt;
+  &lt;LV2_PATH&gt;&lt;/LV2_PATH&gt;
+  &lt;VST2_PATH&gt;&lt;/VST2_PATH&gt;
+  &lt;VST3_PATH&gt;&lt;/VST3_PATH&gt;
+  &lt;SF2_PATH&gt;&lt;/SF2_PATH&gt;
+  &lt;SFZ_PATH&gt;&lt;/SFZ_PATH&gt;
+ &lt;/EngineSettings&gt;
+&lt;/CARLA-PROJECT&gt;
+
+    </Value>
+   </CustomData>
+  </Data>
+ </Plugin>
+
+ <!-- Carla-Rack -->
+ <Plugin>
+  <Info>
+   <Type>LV2</Type>
+   <Name>Discord In</Name>
+   <URI>http://kxstudio.sf.net/carla/plugins/carlarack</URI>
+  </Info>
+
+  <Data>
+   <Active>Yes</Active>
+   <ControlChannel>1</ControlChannel>
+   <Options>0x3f1</Options>
+
+   <CustomData>
+    <Type>http://lv2plug.in/ns/ext/atom#String</Type>
+    <Key>http://kxstudio.sf.net/ns/carla/chunk</Key>
+    <Value>
+&lt;?xml version=&apos;1.0&apos; encoding=&apos;UTF-8&apos;?&gt;
+&lt;!DOCTYPE CARLA-PROJECT&gt;
+&lt;CARLA-PROJECT VERSION=&apos;2.0&apos;&gt;
+ &lt;EngineSettings&gt;
+  &lt;ForceStereo&gt;true&lt;/ForceStereo&gt;
+  &lt;PreferPluginBridges&gt;false&lt;/PreferPluginBridges&gt;
+  &lt;PreferUiBridges&gt;false&lt;/PreferUiBridges&gt;
+  &lt;UIsAlwaysOnTop&gt;true&lt;/UIsAlwaysOnTop&gt;
+  &lt;MaxParameters&gt;200&lt;/MaxParameters&gt;
+  &lt;UIBridgesTimeout&gt;4000&lt;/UIBridgesTimeout&gt;
+  &lt;LADSPA_PATH&gt;&lt;/LADSPA_PATH&gt;
+  &lt;DSSI_PATH&gt;&lt;/DSSI_PATH&gt;
+  &lt;LV2_PATH&gt;&lt;/LV2_PATH&gt;
+  &lt;VST2_PATH&gt;&lt;/VST2_PATH&gt;
+  &lt;VST3_PATH&gt;&lt;/VST3_PATH&gt;
+  &lt;SF2_PATH&gt;&lt;/SF2_PATH&gt;
+  &lt;SFZ_PATH&gt;&lt;/SFZ_PATH&gt;
+ &lt;/EngineSettings&gt;
+&lt;/CARLA-PROJECT&gt;
+
+    </Value>
+   </CustomData>
+  </Data>
+ </Plugin>
+
+ <!-- Carla-Rack -->
+ <Plugin>
+  <Info>
+   <Type>LV2</Type>
+   <Name>Game In</Name>
+   <URI>http://kxstudio.sf.net/carla/plugins/carlarack</URI>
+  </Info>
+
+  <Data>
+   <Active>Yes</Active>
+   <ControlChannel>1</ControlChannel>
+   <Options>0x3f1</Options>
+
+   <CustomData>
+    <Type>http://lv2plug.in/ns/ext/atom#String</Type>
+    <Key>http://kxstudio.sf.net/ns/carla/chunk</Key>
+    <Value>
+&lt;?xml version=&apos;1.0&apos; encoding=&apos;UTF-8&apos;?&gt;
+&lt;!DOCTYPE CARLA-PROJECT&gt;
+&lt;CARLA-PROJECT VERSION=&apos;2.0&apos;&gt;
+ &lt;EngineSettings&gt;
+  &lt;ForceStereo&gt;true&lt;/ForceStereo&gt;
+  &lt;PreferPluginBridges&gt;false&lt;/PreferPluginBridges&gt;
+  &lt;PreferUiBridges&gt;false&lt;/PreferUiBridges&gt;
+  &lt;UIsAlwaysOnTop&gt;true&lt;/UIsAlwaysOnTop&gt;
+  &lt;MaxParameters&gt;200&lt;/MaxParameters&gt;
+  &lt;UIBridgesTimeout&gt;4000&lt;/UIBridgesTimeout&gt;
+  &lt;LADSPA_PATH&gt;&lt;/LADSPA_PATH&gt;
+  &lt;DSSI_PATH&gt;&lt;/DSSI_PATH&gt;
+  &lt;LV2_PATH&gt;&lt;/LV2_PATH&gt;
+  &lt;VST2_PATH&gt;&lt;/VST2_PATH&gt;
+  &lt;VST3_PATH&gt;&lt;/VST3_PATH&gt;
+  &lt;SF2_PATH&gt;&lt;/SF2_PATH&gt;
+  &lt;SFZ_PATH&gt;&lt;/SFZ_PATH&gt;
+ &lt;/EngineSettings&gt;
+&lt;/CARLA-PROJECT&gt;
+
+    </Value>
+   </CustomData>
+  </Data>
+ </Plugin>
+
+ <!-- Carla-Rack -->
+ <Plugin>
+  <Info>
+   <Type>LV2</Type>
+   <Name>Firefox In</Name>
+   <URI>http://kxstudio.sf.net/carla/plugins/carlarack</URI>
+  </Info>
+
+  <Data>
+   <Active>Yes</Active>
+   <ControlChannel>1</ControlChannel>
+   <Options>0x3f1</Options>
+
+   <CustomData>
+    <Type>http://lv2plug.in/ns/ext/atom#String</Type>
+    <Key>http://kxstudio.sf.net/ns/carla/chunk</Key>
+    <Value>
+&lt;?xml version=&apos;1.0&apos; encoding=&apos;UTF-8&apos;?&gt;
+&lt;!DOCTYPE CARLA-PROJECT&gt;
+&lt;CARLA-PROJECT VERSION=&apos;2.0&apos;&gt;
+ &lt;EngineSettings&gt;
+  &lt;ForceStereo&gt;true&lt;/ForceStereo&gt;
+  &lt;PreferPluginBridges&gt;false&lt;/PreferPluginBridges&gt;
+  &lt;PreferUiBridges&gt;false&lt;/PreferUiBridges&gt;
+  &lt;UIsAlwaysOnTop&gt;true&lt;/UIsAlwaysOnTop&gt;
+  &lt;MaxParameters&gt;200&lt;/MaxParameters&gt;
+  &lt;UIBridgesTimeout&gt;4000&lt;/UIBridgesTimeout&gt;
+  &lt;LADSPA_PATH&gt;&lt;/LADSPA_PATH&gt;
+  &lt;DSSI_PATH&gt;&lt;/DSSI_PATH&gt;
+  &lt;LV2_PATH&gt;&lt;/LV2_PATH&gt;
+  &lt;VST2_PATH&gt;&lt;/VST2_PATH&gt;
+  &lt;VST3_PATH&gt;&lt;/VST3_PATH&gt;
+  &lt;SF2_PATH&gt;&lt;/SF2_PATH&gt;
+  &lt;SFZ_PATH&gt;&lt;/SFZ_PATH&gt;
+ &lt;/EngineSettings&gt;
+&lt;/CARLA-PROJECT&gt;
+
+    </Value>
+   </CustomData>
+  </Data>
+ </Plugin>
+
+ <!-- Audio Gain (Stereo) -->
+ <Plugin>
+  <Info>
+   <Type>LV2</Type>
+   <Name>Master Volume</Name>
+   <URI>http://kxstudio.sf.net/carla/plugins/audiogain_s</URI>
+  </Info>
+
+  <Data>
+   <Active>Yes</Active>
+   <ControlChannel>1</ControlChannel>
+   <Options>0x4</Options>
+
+   <Parameter>
+    <Index>1</Index>
+    <Name>Gain</Name>
+    <Symbol>gain</Symbol>
+    <Value>1</Value>
+   </Parameter>
+
+   <Parameter>
+    <Index>2</Index>
+    <Name>Apply Left</Name>
+    <Symbol>apply_left</Symbol>
+    <Value>1</Value>
+   </Parameter>
+
+   <Parameter>
+    <Index>3</Index>
+    <Name>Apply Right</Name>
+    <Symbol>apply_right</Symbol>
+    <Value>1</Value>
+   </Parameter>
+  </Data>
+ </Plugin>
+
+ <ExternalPatchbay>
+  <Connection>
+   <Source>system:capture_1</Source>
+   <Target>Mic in:Audio Input 1</Target>
+  </Connection>
+  <Connection>
+   <Source>system:capture_1</Source>
+   <Target>Mic in:Audio Input 2</Target>
+  </Connection>
+  <Connection>
+   <Source>system:capture_2</Source>
+   <Target>Lav In:Audio Input 2</Target>
+  </Connection>
+  <Connection>
+   <Source>system:capture_2</Source>
+   <Target>Lav In:Audio Input 1</Target>
+  </Connection>
+  <Connection>
+   <Source>Mic in:Audio Output 1</Source>
+   <Target>Mic:in_1</Target>
+  </Connection>
+  <Connection>
+   <Source>Mic in:Audio Output 2</Source>
+   <Target>Mic:in_2</Target>
+  </Connection>
+  <Connection>
+   <Source>Lav In:Audio Output 1</Source>
+   <Target>Lav:in_1</Target>
+  </Connection>
+  <Connection>
+   <Source>Lav In:Audio Output 2</Source>
+   <Target>Lav:in_2</Target>
+  </Connection>
+  <Connection>
+   <Source>Music In:Audio Output 1</Source>
+   <Target>Master Volume:Audio Input 1</Target>
+  </Connection>
+  <Connection>
+   <Source>Music In:Audio Output 1</Source>
+   <Target>Music:in_1</Target>
+  </Connection>
+  <Connection>
+   <Source>Music In:Audio Output 2</Source>
+   <Target>Master Volume:Audio Input 2</Target>
+  </Connection>
+  <Connection>
+   <Source>Music In:Audio Output 2</Source>
+   <Target>Music:in_2</Target>
+  </Connection>
+  <Connection>
+   <Source>Discord In:Audio Output 1</Source>
+   <Target>Master Volume:Audio Input 1</Target>
+  </Connection>
+  <Connection>
+   <Source>Discord In:Audio Output 1</Source>
+   <Target>Discord:in_1</Target>
+  </Connection>
+  <Connection>
+   <Source>Discord In:Audio Output 2</Source>
+   <Target>Master Volume:Audio Input 2</Target>
+  </Connection>
+  <Connection>
+   <Source>Discord In:Audio Output 2</Source>
+   <Target>Discord:in_2</Target>
+  </Connection>
+  <Connection>
+   <Source>Game In:Audio Output 1</Source>
+   <Target>Master Volume:Audio Input 1</Target>
+  </Connection>
+  <Connection>
+   <Source>Game In:Audio Output 1</Source>
+   <Target>Game:in_1</Target>
+  </Connection>
+  <Connection>
+   <Source>Game In:Audio Output 2</Source>
+   <Target>Master Volume:Audio Input 2</Target>
+  </Connection>
+  <Connection>
+   <Source>Game In:Audio Output 2</Source>
+   <Target>Game:in_2</Target>
+  </Connection>
+  <Connection>
+   <Source>Firefox In:Audio Output 1</Source>
+   <Target>Master Volume:Audio Input 1</Target>
+  </Connection>
+  <Connection>
+   <Source>Firefox In:Audio Output 1</Source>
+   <Target>Firefox:in_1</Target>
+  </Connection>
+  <Connection>
+   <Source>Firefox In:Audio Output 2</Source>
+   <Target>Master Volume:Audio Input 2</Target>
+  </Connection>
+  <Connection>
+   <Source>Firefox In:Audio Output 2</Source>
+   <Target>Firefox:in_2</Target>
+  </Connection>
+  <Connection>
+   <Source>Master Volume:Audio Output 1</Source>
+   <Target>system:playback_1</Target>
+  </Connection>
+  <Connection>
+   <Source>Master Volume:Audio Output 1</Source>
+   <Target>system:playback_3</Target>
+  </Connection>
+  <Connection>
+   <Source>Master Volume:Audio Output 2</Source>
+   <Target>system:playback_2</Target>
+  </Connection>
+  <Connection>
+   <Source>Master Volume:Audio Output 2</Source>
+   <Target>system:playback_4</Target>
+  </Connection>
+ </ExternalPatchbay>
+</CARLA-PROJECT>
