@@ -1,0 +1,1 @@
+screenkey --scr 3 --no-systray -t 2 --no-whitespace --opacity .5

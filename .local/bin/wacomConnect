@@ -1,0 +1,6 @@
+#!/bin/bash
+## xrandr shows status of monitors.
+## On startup, remains "disconnected" until turned on
+## Will remain "connected" once turned on
+## xrandr --output DisplayPort-2 --below DisplayPort-0
+[[ "xrandr | awk '/DisplayPort-2/ {print $2}' " ]]
