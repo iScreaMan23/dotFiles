@@ -8,6 +8,9 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
+	" vim-latex-live-preview
+	Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+
 	" Easy mode
 	Plug 'easymotion/vim-easymotion'
 
@@ -162,3 +165,9 @@ call plug#end()
 
 " easy motion
 	nmap s <Plug>(easymotion-s)
+
+" firenvim
+" let fc['.*'] = { 'takeover': 'nonempty' }
+
+" vim-latex-live-preview
+	let g:livepreview_previewer = 'zathura'

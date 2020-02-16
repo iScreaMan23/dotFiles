@@ -1,59 +1,79 @@
-#!/bin/zsh
-# zplug: https://github.com/zplug/zplug
-# oh-my-zsh: https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins
-# awesome-zsh-plugins: https://github.com/unixorn/awesome-zsh-plugins
-# for later maybe? https://github.com/psprint/zsh-navigation-tools
-[ -f "$HOME/.zplug/init.zsh" ] && source ~/.zplug/init.zsh
+#!/usr/bin/env zsh
+
+# Plugins
+	# zplug					https://github.com/zplug/zplug
+	# oh-my-zsh				https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins
+	# awesome-zsh-plugins	https://github.com/unixorn/awesome-zsh-plugins
+	# for later maybe? 		https://github.com/psprint/zsh-navigation-tools
+
+# Source aliases and export PATHs
 [ -f "$HOME/.profile" ] && source "$HOME/.profile"
-[ -f "$HOME/.local/bin/z.sh" ] && source "$HOME/.local/bin/z.sh"
-[ -f "$HOME/.zplug/repos/hchbaw/auto-fu.zsh" ] && source "$HOME/repos/hchbaw/auto-fu.zsh.local/bin/z.sh"
 
-if [[ ! -d ~/.zplug ]];then
-    git clone https://github.com/b4b4r07/zplug ~/.zplug
+# zpm: plugin manager
+if [[ ! -f ~/.zpm/zpm.zsh ]]; then
+  git clone https://github.com/zpm-zsh/zpm ~/.zpm
 fi
+source ~/.zpm/zpm.zsh
 
-zplug "changyuheng/zsh-interactive-cd"
-zplug "zpm-zsh/colorize"
-zplug "ael-code/zsh-colored-man-pages"
-zplug "zsh-users/zsh-autosuggestions"
-zplug "psprint/zsh-navigation-tools"
-zplug "hchbaw/auto-fu.zsh"
-zplug "hlissner/zsh-autopair"
-zplug "zsh-users/zsh-autosuggestions"
-zplug "changyuheng/fz", defer:1
-zplug "rupa/z", use:z.sh
-zplug "softmoth/zsh-vim-mode"
-zplug "kutsan/zsh-system-clipboard"
-zplug "lib/completion", from:oh-my-zsh
-zplug "lib/history", from:oh-my-zsh
-zplug "zsh-vi-more/evil-registers"
-zplug load
+### Core
+zpm if ssh     \
+  zpm-zsh/tmux \
 
 
-zstyle ':completion:*' menu select
-zmodload zsh/complist
-# Use vim keys in tab complete menu:
-bindkey -v
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey '^r' history-incremental-search-backward
+zpm if-not ssh            \
+  zpm-zsh/tmux,apply:path \
 
-export KEYTIMEOUT=1
 
-MODE_CURSOR_VICMD="green block"
-MODE_CURSOR_VIINS="#20d08a blinking bar"
-MODE_CURSOR_SEARCH="#ff00ff steady underline"
-MODE_INDICATOR_VIINS='%F{2}|<%F{2}I>|%f'
-MODE_INDICATOR_VICMD='%F{1}|<%F{1}N>|%f'
-MODE_INDICATOR_REPLACE='%F{1}|<%F{1}R>|%f'
-MODE_INDICATOR_SEARCH='%F{5}|<%F{5}S>|%f'
-MODE_INDICATOR_VISUAL='%F{4}|<%F{4}V>|%f'
-MODE_INDICATOR_VLINE='%F{4}|<%F{4}V>|%f'
-ZSH_AUTOSUGGEST_USE_ASYN=true
+### Compatibility
+zpm if termux          \
+  zpm-zsh/termux,async \
 
-setopt PROMPT_SUBST
-# Note the single quotes
-RPS1='${vcs_info_msg_0_}'
-PS1='${MODE_INDICATOR_PROMPT} %{$fg[cyan]%}%~ %{$fg[green]%}>> '
+  #xfxr/forgit,async								   \
+#zsh-vi-more/evil-registers,async				   \
+### 3party plugins
+zpm                                                \
+  zpm-zsh/core-config                              \
+  zpm-zsh/ignored-users,async                      \
+  zpm-zsh/check-deps                               \
+  zpm-zsh/minimal-theme                            \
+  zpm-zsh/ls,async                                 \
+  zpm-zsh/colorize,async                           \
+  zpm-zsh/ssh,async                                \
+  zpm-zsh/dot,async                                \
+  zpm-zsh/background,async						   \
+  zpm-zsh/dircolors-material,async                 \
+  zpm-zsh/undollar,async                           \
+  zsh-users/zsh-completions,apply:fpath,fpath:/src \
+  ael-code/zsh-colored-man-pages				   \
+  softmoth/zsh-vim-mode,async					   \
+
+zpm if-not ssh                                                                         \
+  lukechilds/zsh-better-npm-completion,async                                           \
+  tj/git-extras,source:/etc/git-extras-completion.zsh,async                            \
+  horosgrisa/utils,apply:path                                                          \
+                                                                                       \
+  zpm-zsh/readers,async                                                                \
+  zpm-zsh/clipboard,async                                                              \
+  zpm-zsh/mysql-colorize,async                                                         \
+  zpm-zsh/zshmarks,async                                                               \
+  voronkovich/gitignore.plugin.zsh,async                                               \
+  zpm-zsh/autoenv,async                                                                \
+                                                                                       \
+  mdumitru/fancy-ctrl-z,async                                                          \
+  hlissner/zsh-autopair,async                                                          \
+  zthxxx/zsh-history-enquirer,async                                                    \
+  zsh-users/zsh-history-substring-search,source:zsh-history-substring-search.zsh,async \
+  psprint/zsh-navigation-tools														   \
+  zdharma/fast-syntax-highlighting,async                                               \
+  horosgrisa/zsh-autosuggestions,source:zsh-autosuggestions.zsh,async                  \
+
+zpm                           \
+  omz/pip,async               \
+  omz/extract,async           \
+  omz/command-not-found,async \
+  omz/wp-cli,async            \
+
+
+if [[ -f ~/.zshrc.local ]]; then
+  source ~/.zshrc.local
+fi

@@ -1,6 +1,0 @@
-#!/bin/sh
-xbacklight -inc 10
-xsetroot -name "Backlight: $(xbacklight -get | cut -f1 -d'.')%"
-ps -aux | grep 'backlightUp\|backlightDown'| head -n -2 | awk '{print }' | xargs kill
-sleep 1
-refreshBar

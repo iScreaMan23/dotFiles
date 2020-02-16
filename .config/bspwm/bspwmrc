@@ -1,16 +1,45 @@
-#! /bin/sh
+#!/bin/bash
 
+# Start Simple X Hotkey Daemon
 sxhkd &
 
-# bspc monitor -d I II III IV V VI VII VIII IX X
+# Load Custom Hotkeys
+if [[ -d ~/.config/keysanity ]]; then
+	xmodmap ~/.config/keysanity/usVim
+	xmodmap ~/.config/keysanity/modRemap
+fi
 
-#### MONITORS ####
-bspc monitor DisplayPort-0 -d 1 2 3
-bspc monitor DisplayPort-1 -d 4 5
-bspc monitor HDMI-A-0 -d 6 7 8
-bspc monitor DisplayPort-2 -d 9 0
+# Increase input rate, decrease delay to input on hold key
+[[ -x "$(command -v xset)" ]] && xset r rate 200 50
 
-# bspc monitor eDP1 -d 1 2 3 4 5 6 7 8 9
+# Hide mouse cursor after 3 seconds
+[[ -x "$(command -v unclutter)" ]] && unclutter --timeout 3 --jitter 75 --ignore-scrolling &
+
+# Compton for terminal transparency and blur
+[[ -x "$(command -v compton)" ]] && compton --backend glx --blur-method kawase --blur-strength 5 --blur-background &
+
+# redeemer config
+if [[ "$HOSTNAME" == "redeemer" ]]; then
+	bspc monitor DisplayPort-0 -d 1 2
+	bspc monitor DisplayPort-1 -d 3 4
+	bspc monitor HDMI-A-0 -d 5 6
+	bspc monitor DisplayPort-2 -d 7 8
+	feh --bg-scale ~/Pictures/wallpaper/NodBGScaled/Nod8.jpg
+	xinput map-to-output 'Wacom Cintiq Pro 13 Pen Pen (0x8880733e)' DisplayPort-2
+	xinput map-to-output 'Wacom Cintiq Pro 13 Touch Finger' DisplayPort-2
+	startJACK
+	[[ -x "$(command -v polybar)" ]] && polybar -r redeemer & disown
+
+# stealthTank config
+elif [[ "$HOSTNAME" == "stealthTank" ]]; then
+	bspc monitor eDP1 -d 1 2 3 4 5 6
+	feh --bg-scale ~/Pictures/NodBG/Nod4.jpg
+	[[ -x "$(command -v polybar)" ]] && polybar -r redeemer & disown
+
+# generic config
+else
+	bspc monitor -d 1 2 3 4 5 6 7 8 9
+fi
 
 #### BSPWM configuration ####
 #bspc config border_radius                8
@@ -45,16 +74,12 @@ bspc config urgent_border_color 	      "#dd2727"
 
 #polybar hidden when fullscreen for vlc, youtube, mpv ...
 #find out the name of your monitor with xrandr
-xdo below -t $(xdo id -n root) $(xdo id -a polybar-main_DisplayPort-0)
-xdo below -t $(xdo id -n root) $(xdo id -a polybar-main_DisplayPort-1)
-xdo below -t $(xdo id -n root) $(xdo id -a polybar-main_DisplayPort-2)
+xdo below -t "$(xdo id -n root) $(xdo id -a polybar-main_DisplayPort-0)"
+xdo below -t "$(xdo id -n root) $(xdo id -a polybar-main_DisplayPort-1)"
+xdo below -t "$(xdo id -n root) $(xdo id -a polybar-main_DisplayPort-2)"
 
 bspc rule -a obs monitor='^2' follow=on
-bspc rule -a Gimp desktop='^0' follow=on
-bspc rule -a Ardour monitor='^4' follow=off
-bspc rule -a mplayer2 state=floating
-bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
-bspc rule -a \* state=tiled
+# bspc rule -a \* state=floating
 
 bspc config ignore_ewmh_fullscreen none

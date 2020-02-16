@@ -7,7 +7,8 @@ export NVIMPATH="$HOME/.config/nvim"
 alias gitdot='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias vi="nvim"
 alias sxhkdrc="vi $HOME/.config/sxhkd/sxhkdrc"
-alias vimrc="vi $NVIMPATH/init.vim $NVIMPATH/plugin.vim $NVIMPATH/theme.vim $NVIMPATH/autocmd.vim"
+alias bspwmrc="vi $HOME/.config/bspwm/bspwmrc"
+alias vimrc="vi $NVIMPATH/init.vim $NVIMPATH/plugin.vim $NVIMPATH/autocmd.vim"
 alias profile="vi $HOME/.profile"
 alias config="vi $HOME/.config"
 
@@ -36,9 +37,11 @@ alias \
 alias \
 	smci="sudo make clean install"\
 
-
 # Default programs:
 export EDITOR="nvim"
 export TERMINAL="st"
 export READER="zathura"
 export BROWSER="firefox"
+
+cdls() { cd "$@"&& ls; }
+alias cd='cdls'

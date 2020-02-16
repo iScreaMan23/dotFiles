@@ -21,7 +21,7 @@
 	autocmd BufWritePost .profile  !source $HOME/.profile
 
 " Update .zshrc
-	autocmd BufWritePost .zshrc  !source $HOME/.zshrc
+	autocmd BufWritePost .zshrc !source $HOME/.zshrc
 
 " Fix shitty bindings :Wut
 	autocmd VimEnter,BufNewFile,BufReadPost * silent! :nnoremap <leader><leader> <Nop> \

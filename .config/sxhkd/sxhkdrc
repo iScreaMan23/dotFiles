@@ -18,8 +18,10 @@ super + {_,shift +} q
 super + {h,j,k,l}
 	bspc node -f {west,south,north,east}
 ## Send To/Change Desktop
-super + {shift +,_} {1-9,0}
-	bspc {node -d,desktop -f} '^{1-9,10}'
+super + {_, + control} + {_,+ shift} {a,s,d,z}
+	bspc {desktop -f, node -d} {1,2,3,4,5,6,7,8}
+## super + control + {_,+ shift} {a,s,d,z}
+## 	bspc node -d {1,2,3,4,5,6,7,8}
 ## Swap w/ biggest/smallest window
 super + {_, shift + } space
 	bspc node -s {biggest,smallest}.local
@@ -38,7 +40,7 @@ super + control + {h,j,k,l}
 super + {t,f}
 	bspc node -t {tiled,floating}
 super + b
-	togglepolybar
+	togglePolybar
 super + u
 	bspc config top_padding 0
 Print
@@ -56,7 +58,7 @@ Print
 super + Return
 	$TERMINAL
 super + o; {w,d,s,o,g,c,r,e}
-	{apstart firefox, apstart discord,apstart startSteam, apstart start_obs, gimp, cadence, apstart retroarch, emacsclient -c}
+	{apulseStart firefox, apulseStart discord,apulseStart steam, apulseStart startOBS, gimp, carlaGUI, apulseStart retroarch, emacsclient -c}
 
 #====================#
 # Hardware Functions #

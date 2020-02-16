@@ -1,4 +1,0 @@
-#!/bin/sh
-sed '/slave/s/\".*\"/\"'"$1"'\"/g' ~/.asoundrc > ~/.asoundrc_new
-mv ~/.asoundrc_new ~/.asoundrc
-apulse "$1" &

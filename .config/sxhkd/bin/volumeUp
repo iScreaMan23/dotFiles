@@ -1,5 +1,0 @@
-#!/bin/sh
-xsetroot -name "Volume: $(amixer set 'Master' 5%+ | awk '/Mono:/ {print $4}')"
-ps -aux | grep 'volumeUp\|volumeDown'| head -n -2 | awk '{print }' | xargs kill
-sleep 1
-refreshBar
