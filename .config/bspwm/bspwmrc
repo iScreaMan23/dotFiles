@@ -3,6 +3,10 @@
 # Start Simple X Hotkey Daemon
 sxhkd &
 
+# Remove problems from zsh history
+cp ~/.zsh_history /tmp/
+cat -v /tmp/.zsh_history | sed /^\^@/d > ~/.zsh_history
+
 # Load Custom Hotkeys
 if [[ -d ~/.config/keysanity ]]; then
 	xmodmap ~/.config/keysanity/usVim
@@ -18,7 +22,7 @@ fi
 # Compton for terminal transparency and blur
 [[ -x "$(command -v compton)" ]] && compton --backend glx --blur-method kawase --blur-strength 5 --blur-background &
 
-# redeemer config
+# Redeemer config
 if [[ "$HOSTNAME" == "redeemer" ]]; then
 	bspc monitor DisplayPort-0 -d 1 2
 	bspc monitor DisplayPort-1 -d 3 4
@@ -27,16 +31,16 @@ if [[ "$HOSTNAME" == "redeemer" ]]; then
 	feh --bg-scale ~/Pictures/wallpaper/NodBGScaled/Nod8.jpg
 	xinput map-to-output 'Wacom Cintiq Pro 13 Pen Pen (0x8880733e)' DisplayPort-2
 	xinput map-to-output 'Wacom Cintiq Pro 13 Touch Finger' DisplayPort-2
-	startJACK
+	startJACK &> /dev/null
 	[[ -x "$(command -v polybar)" ]] && polybar -r redeemer & disown
 
-# stealthTank config
+# StealthTank config
 elif [[ "$HOSTNAME" == "stealthTank" ]]; then
 	bspc monitor eDP1 -d 1 2 3 4 5 6
 	feh --bg-scale ~/Pictures/NodBG/Nod4.jpg
-	[[ -x "$(command -v polybar)" ]] && polybar -r redeemer & disown
+	[[ -x "$(command -v polybar)" ]] && polybar -r stealthTank & disown
 
-# generic config
+# Generic config
 else
 	bspc monitor -d 1 2 3 4 5 6 7 8 9
 fi
@@ -80,6 +84,7 @@ xdo below -t "$(xdo id -n root) $(xdo id -a polybar-main_DisplayPort-2)"
 
 bspc rule -a obs monitor='^2' follow=on
 bspc rule -a Screenkey manage=off
-# bspc rule -a \* state=floating
+bspc rule -a emacsclient state=tiled
+bspc rule -a \* state=tiled
 
 bspc config ignore_ewmh_fullscreen none

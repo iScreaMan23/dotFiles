@@ -13,7 +13,7 @@ super + m
 	bspc desktop -l next
 ## Close/kill window
 super + {_,shift +} q
-	bspc node -{c,k}
+	bspwm_smart_close -{c,k}
 ## Focus/Preselect Window
 super + {h,j,k,l}
 	bspc node -f {west,south,north,east}
@@ -58,7 +58,7 @@ Print
 super + Return
 	$TERMINAL
 super + o; {w,d,s,o,g,c,r,e}
-	{apulseStart firefox, apulseStart discord,apulseStart steam, apulseStart startOBS, gimp, carlaGUI, apulseStart retroarch, emacsclient -c}
+	{apulseStart firefox, apulseStart discord,apulseStart steam, startOBS, gimp, carlaToggle, apulseStart retroarch, emacsclient -c}
 
 #====================#
 # Hardware Functions #

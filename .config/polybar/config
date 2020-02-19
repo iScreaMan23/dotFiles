@@ -55,7 +55,7 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 font-3 = Noto Color Emoji:scale=10;2
 
-modules-left = bspwm i3
+# modules-left = bspwm i3
 modules-center = mpd
 modules-right = pulseaudio memory cpu wlan eth battery temperature date time
 
@@ -91,7 +91,7 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 font-3 = Noto Color Emoji:scale=10;2
 
-modules-left = bspwm i3
+# modules-left = bspwm i3
 modules-center = mpd
 modules-right = memory cpu wlan eth battery temperature date time
 

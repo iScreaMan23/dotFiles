@@ -6,11 +6,16 @@ export NVIMPATH="$HOME/.config/nvim"
 
 alias gitdot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias vi="nvim"
-alias sxhkdrc="vi ~/.config/sxhkd/sxhkdrc"
+
 alias bspwmrc="vi ~/.config/bspwm/bspwmrc"
+alias mpdrc="vi ~/.config/mpd/mpd.conf ~/.config/ncmpcpp/config"
+alias polybarrc="vi ~/.config/polybar/config"
+alias profilerc="vi ~/.profile"
+alias sxhkdrc="vi ~/.config/sxhkd/sxhkdrc"
+alias rangerrc="vi ~/.config/ranger/rc.conf"
+alias retroarch="vi ~/.config/retroarch/retroarch.cfg"
 alias vimrc="vi $NVIMPATH/init.vim $NVIMPATH/plugin.vim $NVIMPATH/autocmd.vim"
-alias profile="vi ~/.profile"
-alias config="vi ~/.config"
+alias xinitrc="vi ~/.xinitrc"
 
 alias \
 	ls='exa --color=always --group-directories-first' \
@@ -37,9 +42,9 @@ alias \
 
 # Default programs:
 export EDITOR="nvim"
-export TERMINAL="st"
+export TERMINAL="alacritty"
 export READER="zathura"
 export BROWSER="firefox"
 
-cdls() { cd "$@"&& ls; }
-alias cd='cdls'
+# cdls() { cd "$@" && ls; }
+# alias cd='cdls'

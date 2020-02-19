@@ -1,6 +1,3 @@
-" Hard Mode
-	" autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
-
 " Language Specific
 	autocmd BufEnter,Filetype vim silent! call airline#extensions#whitespace#disable()
 

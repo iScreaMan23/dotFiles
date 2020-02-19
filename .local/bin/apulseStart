@@ -1,4 +1,8 @@
 #!/bin/sh
+# https://stackoverflow.com/questions/3811345/how-to-pass-all-arguments-passed-to-my-bash-script-to-a-function-of-mine#3816747
+# expand parameter for generalizing firefox starting
+
 sed '/slave/s/\".*\"/\"'"$1"'\"/g' ~/.asoundrc > ~/.asoundrc_new
 mv ~/.asoundrc_new ~/.asoundrc
+echo ""
 apulse "$1" &

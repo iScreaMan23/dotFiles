@@ -1,10 +1,6 @@
 #!/bin/sh
+jackd --silent -d alsa -d hw:USB -r 48000 -n 2 -p 256 &
 
-jack_control ds alsa
-jack_control dps device hw:USB
-jack_control dps rate 48000
-jack_control dps nperiods 2
-jack_control dps period 256
-jack_control start
+aj-snapshot -d &
 
-carlaBG
+carlaToggle &

@@ -1,5 +1,0 @@
-#!/bin/sh
-
-killall carla
-carla -n ~/.config/audio/.carlaDefaultConfig.carxp &
-

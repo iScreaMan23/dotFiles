@@ -1,6 +1,0 @@
-#!/bin/sh
-
-killall carla
-carla ~/.config/audio/.carlaDefaultConfig.carxp
-aj-snapshot -r ~/.config/audio/obsConfig
-
