@@ -25,17 +25,6 @@ alias \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
 
-alias \
-	gp='git push origin master' \
-	gi='git init' \
-	g='git ' \
-	gb='git branch' \
-	gc='git checkout ' \
-	ga='git add ' \
-	gcm='git commit -m' \
-	gca='git commit --amend' \
-	gf='git fetch' \
-
 # These common commands are just too long! Abbreviate them.
 alias \
 	smci="sudo make clean install"\
